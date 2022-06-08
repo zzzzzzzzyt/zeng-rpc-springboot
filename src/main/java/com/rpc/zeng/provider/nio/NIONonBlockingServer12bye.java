@@ -1,9 +1,9 @@
 package com.rpc.zeng.provider.nio;
 
+import com.rpc.zeng.common.method.ByeService;
+import com.rpc.zeng.provider.api.ByeServiceImpl;
+import com.rpc.zeng.provider.service_registry.ZkServiceRegistry;
 import lombok.extern.slf4j.Slf4j;
-import method.ByeService;
-import provider.api.ByeServiceImpl;
-import provider.service_registry.ZkServiceRegistry;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

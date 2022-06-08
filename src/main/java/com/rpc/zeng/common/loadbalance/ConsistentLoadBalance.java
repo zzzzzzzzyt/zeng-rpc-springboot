@@ -1,5 +1,6 @@
 package com.rpc.zeng.common.loadbalance;
 
+import com.rpc.zeng.common.exception.RpcException;
 import exception.RpcException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.KeeperException;

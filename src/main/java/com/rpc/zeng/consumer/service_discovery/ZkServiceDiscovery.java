@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
+import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_SESSION_TIMEOUT;
 import static constants.RpcConstants.ZOOKEEPER_ADDRESS;
 import static constants.RpcConstants.ZOOKEEPER_SESSION_TIMEOUT;
 

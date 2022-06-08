@@ -1,20 +1,20 @@
 package com.rpc.zeng.common.configuration;
 
-import annotation.*;
-import loadbalance.RandomLoadBalance;
+import com.rpc.zeng.common.annotation.*;
+import com.rpc.zeng.common.loadbalance.RandomLoadBalance;
 
 /**
- * @Author ×£Ó¢Ì¨Õ¨ÓÍÌõ
+ * @Author ç¥è‹±å°ç‚¸æ²¹æ¡
  * @Time : 2022/5/20 20:42
- * È«¾ÖÅäÖÃ  ½«ËùÓĞµÄÅäÖÃ¶¼ÅäÖÃÔÚËüÉÏÃæ
- * ½âÑ¹ËõÆ÷ ĞòÁĞ»¯Æ÷ ×¢²áÖĞĞÄ ¸ºÔØ¾ùºâ ĞÄÌø»úÖÆµÈ
+ * å…¨å±€é…ç½®  å°†æ‰€æœ‰çš„é…ç½®éƒ½é…ç½®åœ¨å®ƒä¸Šé¢
+ * è§£å‹ç¼©å™¨ åºåˆ—åŒ–å™¨ æ³¨å†Œä¸­å¿ƒ è´Ÿè½½å‡è¡¡ å¿ƒè·³æœºåˆ¶ç­‰
  **/
 /*
     @RegistryChosen
 
-    zookeeper   zk×¢²áÖĞĞÄ
-    nacos       nacosÊµÏÖ×¢²áÖĞĞÄ
-    zkCurator   CuratorĞ­Öú²Ù×÷×¢²áÖĞĞÄ
+    zookeeper   zkæ³¨å†Œä¸­å¿ƒ
+    nacos       nacoså®ç°æ³¨å†Œä¸­å¿ƒ
+    zkCurator   CuratorååŠ©æ“ä½œæ³¨å†Œä¸­å¿ƒ
 */
 
 /*

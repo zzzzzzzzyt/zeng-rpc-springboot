@@ -1,8 +1,8 @@
 package com.rpc.zeng.consumer.bootstrap.netty;
 
 
-import consumer.proxy.ClientProxyTool;
-import method.Customer;
+import com.rpc.zeng.common.method.Customer;
+import com.rpc.zeng.consumer.proxy.ClientProxyTool;
 
 /*
     以netty为网络编程框架的消费者端启动类

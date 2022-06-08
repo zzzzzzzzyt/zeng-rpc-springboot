@@ -1,8 +1,8 @@
 package com.rpc.zeng.provider.api;
 
-import entity.Person;
-import entity.PersonPOJO;
-import method.GetNameService;
+import com.rpc.zeng.common.entity.Person;
+import com.rpc.zeng.common.entity.PersonPOJO;
+import com.rpc.zeng.common.method.GetNameService;
 
 /**
  * @author 祝英台炸油条

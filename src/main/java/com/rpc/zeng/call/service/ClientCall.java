@@ -1,11 +1,11 @@
 package com.rpc.zeng.call.service;
 
-import annotation.RpcClientBootStrap;
-import annotation.RpcToolsSelector;
-import entity.Person;
+import com.rpc.zeng.call.service.call.ChosenClientCall;
+import com.rpc.zeng.common.annotation.RpcClientBootStrap;
+import com.rpc.zeng.common.annotation.RpcToolsSelector;
+import com.rpc.zeng.common.entity.Person;
+import com.rpc.zeng.common.method.Customer;
 import lombok.extern.slf4j.Slf4j;
-import method.Customer;
-import service.call.ChosenClientCall;
 
 
 //总客户端启动类  用户调用 什么版本的  和用什么工具 使用什么注册中心  序列化的选择 都可以用这个来玩

@@ -1,5 +1,6 @@
 package com.rpc.zeng.common.serialization.protostuff;
 
+import com.rpc.zeng.common.serialization.Serializer;
 import io.protostuff.LinkedBuffer;
 import io.protostuff.ProtostuffIOUtil;
 import io.protostuff.Schema;

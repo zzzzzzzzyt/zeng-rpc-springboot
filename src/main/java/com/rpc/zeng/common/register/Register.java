@@ -1,6 +1,6 @@
 package com.rpc.zeng.common.register;
 
-import annotation.RegistryChosen;
+import com.rpc.zeng.common.annotation.RegistryChosen;
 
 //注册中心的选择在这配置
 //注册中心的选择 启用的是nacos 目前

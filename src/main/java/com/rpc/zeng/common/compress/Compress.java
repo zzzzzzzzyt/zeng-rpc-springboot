@@ -1,6 +1,7 @@
 package com.rpc.zeng.common.compress;
 
-import annotation.CompressFunction;
+
+import com.rpc.zeng.common.annotation.CompressFunction;
 
 /**
  * @author 祝英台炸油条

@@ -1,9 +1,9 @@
 package com.rpc.zeng.provider.nio;
 
+import com.rpc.zeng.common.method.HelloService;
+import com.rpc.zeng.provider.api.HelloServiceImpl;
+import com.rpc.zeng.provider.service_registry.ZkServiceRegistry;
 import lombok.extern.slf4j.Slf4j;
-import method.HelloService;
-import provider.api.HelloServiceImpl;
-import provider.service_registry.ZkServiceRegistry;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

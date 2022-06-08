@@ -1,6 +1,6 @@
 package com.rpc.zeng.provider.bootstrap.netty;
 
-import provider.netty.NettyServer20;
+import com.rpc.zeng.provider.netty.NettyServer20;
 
 /*
     以netty为网络编程框架的服务提供端启动类

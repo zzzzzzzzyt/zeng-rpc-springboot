@@ -1,7 +1,7 @@
 package com.rpc.zeng.common.monitor.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import monitor.RpcMonitor;
+import com.rpc.zeng.common.monitor.RpcMonitor;
 
 /**
  * @Author 祝英台炸油条

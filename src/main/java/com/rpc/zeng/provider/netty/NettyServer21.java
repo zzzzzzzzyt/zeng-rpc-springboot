@@ -1,6 +1,7 @@
 package com.rpc.zeng.provider.netty;
 
 
+import com.rpc.zeng.provider.utils.MethodRegister;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -10,7 +11,6 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import lombok.extern.slf4j.Slf4j;
 import provider.netty_server_handler.NettyServerHandler21;
-import provider.utils.MethodRegister;
 
 //进行启动 绑定然后创建对应的 然后注册进注册中心去
 

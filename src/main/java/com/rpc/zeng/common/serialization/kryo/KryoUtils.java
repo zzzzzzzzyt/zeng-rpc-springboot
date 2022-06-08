@@ -3,6 +3,7 @@ package com.rpc.zeng.common.serialization.kryo;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import com.rpc.zeng.common.serialization.Serializer;
 import serialization.Serializer;
 
 import java.io.ByteArrayInputStream;

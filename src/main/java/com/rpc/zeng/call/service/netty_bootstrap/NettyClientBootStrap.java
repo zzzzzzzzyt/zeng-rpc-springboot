@@ -1,14 +1,14 @@
 package com.rpc.zeng.call.service.netty_bootstrap;
 
-import annotation.RpcClientBootStrap;
-import consumer.bootstrap.netty.NettyConsumerBootStrap20;
-import consumer.bootstrap.netty.NettyConsumerBootStrap21;
-import consumer.bootstrap.netty.NettyConsumerBootStrap22;
-import consumer.bootstrap.netty.NettyConsumerBootStrap24;
-import exception.RpcException;
+import com.rpc.zeng.call.service.ClientCall;
+import com.rpc.zeng.common.annotation.RpcClientBootStrap;
+import com.rpc.zeng.common.exception.RpcException;
+import com.rpc.zeng.common.method.Customer;
+import com.rpc.zeng.consumer.bootstrap.netty.NettyConsumerBootStrap20;
+import com.rpc.zeng.consumer.bootstrap.netty.NettyConsumerBootStrap21;
+import com.rpc.zeng.consumer.bootstrap.netty.NettyConsumerBootStrap22;
+import com.rpc.zeng.consumer.bootstrap.netty.NettyConsumerBootStrap24;
 import lombok.extern.slf4j.Slf4j;
-import method.Customer;
-import service.ClientCall;
 
 //netty客户端的启动类
 

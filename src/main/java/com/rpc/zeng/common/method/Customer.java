@@ -1,5 +1,7 @@
 package com.rpc.zeng.common.method;
 
+import com.rpc.zeng.common.entity.Person;
+import com.rpc.zeng.common.entity.PersonPOJO;
 import entity.Person;
 import entity.PersonPOJO;
 

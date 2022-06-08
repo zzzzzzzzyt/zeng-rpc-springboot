@@ -1,11 +1,11 @@
 package com.rpc.zeng.provider.nio;
 
-import entity.RpcRequest;
+import com.rpc.zeng.common.entity.RpcRequest;
+import com.rpc.zeng.common.method.ByeService;
+import com.rpc.zeng.common.method.HelloService;
+import com.rpc.zeng.provider.api.ByeServiceImpl;
+import com.rpc.zeng.provider.api.HelloServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import method.ByeService;
-import method.HelloService;
-import provider.api.ByeServiceImpl;
-import provider.api.HelloServiceImpl;
 
 import java.io.*;
 import java.net.InetSocketAddress;

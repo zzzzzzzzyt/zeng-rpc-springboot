@@ -2,8 +2,8 @@ package com.rpc.zeng.common.serialization.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rpc.zeng.common.serialization.Serializer;
 import lombok.extern.slf4j.Slf4j;
-import serialization.Serializer;
 
 import java.io.IOException;
 

@@ -1,8 +1,8 @@
 package com.rpc.zeng.common.serialization.fst;
 
 
+import com.rpc.zeng.common.serialization.Serializer;
 import org.nustaq.serialization.FSTConfiguration;
-import serialization.Serializer;
 
 //一款较新的序列化工具
 

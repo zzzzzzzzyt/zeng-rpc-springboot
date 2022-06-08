@@ -1,7 +1,7 @@
 package com.rpc.zeng.consumer.netty;
 
 
-import consumer.netty_client_handler.NettyClientHandler21;
+import com.rpc.zeng.consumer.netty_client_handler.NettyClientHandler21;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

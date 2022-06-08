@@ -1,10 +1,10 @@
 package com.rpc.zeng.common.method;
 
-import entity.Person;
-import entity.PersonPOJO;
+import com.rpc.zeng.common.entity.Person;
+import com.rpc.zeng.common.entity.PersonPOJO;
 
 /**
- * @author ףӢ̨ը����
+ * @author ףӢ̨ը����
  */
 public interface GetNameService {
     String sayGetName(Person person);

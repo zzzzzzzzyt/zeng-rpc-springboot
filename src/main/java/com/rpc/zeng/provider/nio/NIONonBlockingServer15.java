@@ -1,7 +1,7 @@
 package com.rpc.zeng.provider.nio;
 
+import com.rpc.zeng.provider.utils.MethodRegister;
 import lombok.extern.slf4j.Slf4j;
-import provider.utils.MethodRegister;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

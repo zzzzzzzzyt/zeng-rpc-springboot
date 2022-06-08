@@ -1,14 +1,14 @@
 package com.rpc.zeng.consumer.netty_client_handler;
 
 
-import annotation.CompressFunction;
-import compress.CompressTypeTool;
-import configuration.GlobalConfiguration;
+import com.rpc.zeng.common.annotation.CompressFunction;
+import com.rpc.zeng.common.compress.CompressTypeTool;
+import com.rpc.zeng.common.configuration.GlobalConfiguration;
+import com.rpc.zeng.common.serialization.SerializationTool;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
-import serialization.SerializationTool;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.Callable;

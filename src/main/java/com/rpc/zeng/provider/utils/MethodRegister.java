@@ -1,12 +1,12 @@
 package com.rpc.zeng.provider.utils;
 
-import annotation.RegistryChosen;
-import configuration.GlobalConfiguration;
-import exception.RpcException;
+import com.rpc.zeng.common.annotation.RegistryChosen;
+import com.rpc.zeng.common.configuration.GlobalConfiguration;
+import com.rpc.zeng.common.exception.RpcException;
+import com.rpc.zeng.provider.service_registry.NacosServiceRegistry;
+import com.rpc.zeng.provider.service_registry.ZkCuratorRegistry;
+import com.rpc.zeng.provider.service_registry.ZkServiceRegistry;
 import lombok.extern.slf4j.Slf4j;
-import provider.service_registry.NacosServiceRegistry;
-import provider.service_registry.ZkCuratorRegistry;
-import provider.service_registry.ZkServiceRegistry;
 
 
 //直接实现启动类根据启动类接口上的注解选择对应需要选取的方法

@@ -1,10 +1,10 @@
 package com.rpc.zeng.consumer.netty;
 
 
-import annotation.HeartBeatTool;
 import codec.AddCodec;
-import configuration.GlobalConfiguration;
-import consumer.netty_client_handler.NettyClientHandler24;
+import com.rpc.zeng.common.annotation.HeartBeatTool;
+import com.rpc.zeng.common.configuration.GlobalConfiguration;
+import com.rpc.zeng.consumer.netty_client_handler.NettyClientHandler24;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

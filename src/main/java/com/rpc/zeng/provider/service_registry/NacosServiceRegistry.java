@@ -3,7 +3,7 @@ package com.rpc.zeng.provider.service_registry;
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.NamingService;
-import constants.RpcConstants;
+import com.rpc.zeng.common.constants.RpcConstants;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Properties;

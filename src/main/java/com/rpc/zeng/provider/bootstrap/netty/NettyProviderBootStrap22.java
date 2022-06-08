@@ -1,7 +1,7 @@
 package com.rpc.zeng.provider.bootstrap.netty;
 
 
-import provider.netty.NettyServer22;
+import com.rpc.zeng.provider.netty.NettyServer22;
 
 
 /*

@@ -1,16 +1,16 @@
 package com.rpc.zeng.common.serialization;
 
-import annotation.RpcSerializationSelector;
-import configuration.GlobalConfiguration;
-import exception.RpcException;
+import com.rpc.zeng.common.annotation.RpcSerializationSelector;
+import com.rpc.zeng.common.configuration.GlobalConfiguration;
+import com.rpc.zeng.common.exception.RpcException;
+import com.rpc.zeng.common.serialization.fst.FSTUtils;
+import com.rpc.zeng.common.serialization.hessian.HessianUtils;
+import com.rpc.zeng.common.serialization.json.FastJsonUtils;
+import com.rpc.zeng.common.serialization.json.GsonUtils;
+import com.rpc.zeng.common.serialization.json.JacksonUtils;
+import com.rpc.zeng.common.serialization.kryo.KryoUtils;
+import com.rpc.zeng.common.serialization.protostuff.ProtostuffUtils;
 import lombok.extern.slf4j.Slf4j;
-import serialization.fst.FSTUtils;
-import serialization.hessian.HessianUtils;
-import serialization.json.FastJsonUtils;
-import serialization.json.GsonUtils;
-import serialization.json.JacksonUtils;
-import serialization.kryo.KryoUtils;
-import serialization.protostuff.ProtostuffUtils;
 
 //这是一个进行统一序列化的一个工具
 

@@ -1,6 +1,6 @@
 package com.rpc.zeng.consumer.proxy;
 
-import exception.RpcException;
+import com.rpc.zeng.common.exception.RpcException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ServiceLoader;

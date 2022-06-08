@@ -1,6 +1,6 @@
 package com.rpc.zeng.common.compress.diyzip;
 
-import compress.CompressType;
+import com.rpc.zeng.common.compress.CompressType;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;

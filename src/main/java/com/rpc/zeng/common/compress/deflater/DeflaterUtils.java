@@ -1,6 +1,6 @@
 package com.rpc.zeng.common.compress.deflater;
 
-import compress.CompressType;
+import com.rpc.zeng.common.compress.CompressType;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayOutputStream;

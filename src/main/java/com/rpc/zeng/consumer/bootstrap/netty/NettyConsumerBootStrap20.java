@@ -1,6 +1,6 @@
 package com.rpc.zeng.consumer.bootstrap.netty;
 
-import consumer.netty.NettyClient20;
+import com.rpc.zeng.consumer.netty.NettyClient20;
 
 /*
     以netty为网络编程框架的消费者端启动类

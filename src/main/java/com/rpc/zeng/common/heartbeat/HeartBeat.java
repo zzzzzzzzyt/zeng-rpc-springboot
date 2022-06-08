@@ -1,10 +1,10 @@
 package com.rpc.zeng.common.heartbeat;
 
-import annotation.HeartBeatTool;
+import com.rpc.zeng.common.annotation.HeartBeatTool;
 
 /**
- * @author ×£Ó¢Ì¨Õ¨ÓÍÌõ
- * ĞÄÌø»úÖÆ ¹¤¾ßÀà   Õâ¸öÀà±ğ¹ıÊ±ÁË Í³Ò»¹ÜÀíÔÚÍ³Ò»ÅäÖÃÀàÖĞ
+ * @author ç¥è‹±å°ç‚¸æ²¹æ¡
+ * å¿ƒè·³æœºåˆ¶ å·¥å…·ç±»   è¿™ä¸ªç±»åˆ«è¿‡æ—¶äº† ç»Ÿä¸€ç®¡ç†åœ¨ç»Ÿä¸€é…ç½®ç±»ä¸­
  */
 @Deprecated
 @HeartBeatTool(isOpenFunction = true,

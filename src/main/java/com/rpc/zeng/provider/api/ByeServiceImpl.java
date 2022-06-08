@@ -1,6 +1,7 @@
 package com.rpc.zeng.provider.api;
 
-import method.ByeService;
+
+import com.rpc.zeng.common.method.ByeService;
 
 /**
  * @author 祝英台炸油条

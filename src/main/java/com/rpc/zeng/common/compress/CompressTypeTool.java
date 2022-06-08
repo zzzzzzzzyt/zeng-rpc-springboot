@@ -3,15 +3,15 @@ package com.rpc.zeng.common.compress;
 
 //实际调用 通过SPI机制
 
-import annotation.CompressSelector;
-import compress.bzip.BZipUtils;
-import compress.deflater.DeflaterUtils;
-import compress.diyzip.DiyZipUtils;
-import compress.gzip.GZipUtils;
-import compress.lz4.Lz4Utils;
-import compress.zip.ZipUtils;
-import configuration.GlobalConfiguration;
-import exception.RpcException;
+import com.rpc.zeng.common.annotation.CompressSelector;
+import com.rpc.zeng.common.compress.bzip.BZipUtils;
+import com.rpc.zeng.common.compress.deflater.DeflaterUtils;
+import com.rpc.zeng.common.compress.diyzip.DiyZipUtils;
+import com.rpc.zeng.common.compress.gzip.GZipUtils;
+import com.rpc.zeng.common.compress.lz4.Lz4Utils;
+import com.rpc.zeng.common.compress.zip.ZipUtils;
+import com.rpc.zeng.common.configuration.GlobalConfiguration;
+import com.rpc.zeng.common.exception.RpcException;
 import lombok.extern.slf4j.Slf4j;
 
 /**

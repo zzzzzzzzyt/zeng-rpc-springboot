@@ -2,6 +2,7 @@ package com.rpc.zeng.provider.netty;
 
 
 import codec.AddCodec;
+import com.rpc.zeng.provider.utils.MethodRegister;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
