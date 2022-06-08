@@ -8,6 +8,7 @@
     <name>zeng-rpc-springboot</name>
     <description>zeng-rpc-springboot</description>
 
+
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -164,33 +165,21 @@
         </dependency>
 
 
-        <!--数据库连接驱动-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.29</version>
-        </dependency>
 
-        <!-- 数据库连接池：c3p0-->
-        <dependency>
-            <groupId>com.mchange</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.5.5</version>
-        </dependency>
+
 
         <!--mybatis用来和数据库进行交互-->
 
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus</artifactId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.1</version>
         </dependency>
 
-
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>5.3.20</version>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.4</version>
         </dependency>
 
 
@@ -201,12 +190,7 @@
             <version>8.0.16</version>
         </dependency>
 
-        <!--主要提供了三个功能：第一个是对数据源的装配，第二个是提供一个JdbcTemplate简化使用，第三个是事务。-->
-        <!--其实这里并不用配置  因为底下的mybatis的启动类已经引入了对应包-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
+
     </dependencies>
 
     <dependencyManagement>

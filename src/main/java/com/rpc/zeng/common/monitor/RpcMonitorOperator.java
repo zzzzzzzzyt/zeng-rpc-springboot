@@ -6,8 +6,6 @@ import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.monitor.service.RpcMonitorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @Author 祝英台炸油条

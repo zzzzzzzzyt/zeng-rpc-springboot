@@ -1,4 +1,4 @@
-#������Ҫʹ���ĸ���ѹ���ķ��� �򿪶�Ӧ�Ľ�ѹ��������ע�⼴�� ��ݼ�ctrl+/
+#根据需要使用哪个解压缩的方法 打开对应的解压缩工具类注解即可 快捷键ctrl+/
 #com.rpc.zeng.common.compress.bzip.BZipUtils
 com.rpc.zeng.common.compress.deflater.DeflaterUtils
 #com.rpc.zeng.common.compress.gzip.GZipUtils
