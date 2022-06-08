@@ -58,7 +58,7 @@ import com.rpc.zeng.common.loadbalance.RandomLoadBalance;
         writerIdleTimeSeconds = 4,
         allIdleTimeSeconds = 2)
 @LoadBalanceMethodImpl(chosenMethod = RandomLoadBalance.class)
-@RegistryChosen(registryName = "zookeeper")
+@RegistryChosen(registryName = "nacos")
 @RpcSerializationSelector(RpcSerialization = "fastjson")
 public class GlobalConfiguration {
 }

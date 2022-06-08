@@ -6,16 +6,18 @@ import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.monitor.service.RpcMonitorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author 祝英台炸油条
  * @Time : 2022/6/3 19:47
  **/
 @Slf4j
+@Component
 public class RpcMonitorOperator {
 
     @Autowired
-    static RpcMonitorService rpcMonitorService;
+    private RpcMonitorService rpcMonitorService;
 
 
     /**
