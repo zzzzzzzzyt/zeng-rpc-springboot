@@ -2,7 +2,6 @@ package com.rpc.zeng.common.serialization.json;
 
 import com.google.gson.Gson;
 import com.rpc.zeng.common.serialization.Serializer;
-import serialization.Serializer;
 
 import java.nio.charset.StandardCharsets;
 

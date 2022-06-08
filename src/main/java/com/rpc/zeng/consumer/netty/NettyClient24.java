@@ -1,8 +1,8 @@
 package com.rpc.zeng.consumer.netty;
 
 
-import codec.AddCodec;
 import com.rpc.zeng.common.annotation.HeartBeatTool;
+import com.rpc.zeng.common.codec.AddCodec;
 import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.consumer.netty_client_handler.NettyClientHandler24;
 import io.netty.bootstrap.Bootstrap;

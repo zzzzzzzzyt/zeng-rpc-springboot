@@ -5,7 +5,7 @@ import com.rpc.zeng.common.entity.Person;
 import com.rpc.zeng.common.entity.PersonPOJO;
 
 /**
- * @author ףӢ̨ը����
+ * @author 祝英台
  */
 public interface GetPersonService {
     Person sayGetPerson(Person person);

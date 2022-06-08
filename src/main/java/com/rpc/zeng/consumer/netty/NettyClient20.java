@@ -1,6 +1,6 @@
 package com.rpc.zeng.consumer.netty;
 
-import consumer.netty_client_handler.NettyClientHandler20;
+import com.rpc.zeng.consumer.netty_client_handler.NettyClientHandler20;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

@@ -10,9 +10,9 @@ import com.rpc.zeng.consumer.service_discovery.NacosServiceDiscovery;
 import com.rpc.zeng.consumer.service_discovery.ZkCuratorDiscovery;
 import com.rpc.zeng.consumer.service_discovery.ZkServiceDiscovery;
 import lombok.extern.slf4j.Slf4j;
+import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
-import org.springframework.cglib.proxy.Enhancer;
-import org.springframework.cglib.proxy.MethodProxy;
+import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 

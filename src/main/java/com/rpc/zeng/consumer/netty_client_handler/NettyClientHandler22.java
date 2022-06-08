@@ -1,13 +1,13 @@
 package com.rpc.zeng.consumer.netty_client_handler;
 
-import annotation.RpcSerializationSelector;
-import configuration.GlobalConfiguration;
+import com.rpc.zeng.common.annotation.RpcSerializationSelector;
+import com.rpc.zeng.common.configuration.GlobalConfiguration;
+import com.rpc.zeng.common.serialization.hessian.HessianUtils;
+import com.rpc.zeng.common.serialization.kryo.KryoUtils;
+import com.rpc.zeng.common.serialization.protostuff.ProtostuffUtils;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
-import serialization.hessian.HessianUtils;
-import serialization.kryo.KryoUtils;
-import serialization.protostuff.ProtostuffUtils;
 
 import java.util.concurrent.Callable;
 

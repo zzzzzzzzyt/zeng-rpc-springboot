@@ -1,7 +1,8 @@
 package com.rpc.zeng.provider.netty;
 
 
-import codec.AddCodec;
+import com.rpc.zeng.common.codec.AddCodec;
+import com.rpc.zeng.provider.netty_server_handler.NettyServerHandler24;
 import com.rpc.zeng.provider.utils.MethodRegister;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -9,8 +10,6 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
-import provider.netty_server_handler.NettyServerHandler24;
-import provider.utils.MethodRegister;
 
 import java.lang.reflect.Method;
 

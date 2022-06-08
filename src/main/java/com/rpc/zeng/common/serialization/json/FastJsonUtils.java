@@ -2,7 +2,6 @@ package com.rpc.zeng.common.serialization.json;
 
 import com.alibaba.fastjson.JSON;
 import com.rpc.zeng.common.serialization.Serializer;
-import serialization.Serializer;
 
 //阿里巴巴旗下的进行json转换的工具
 

@@ -1,7 +1,7 @@
 package com.rpc.zeng.consumer.netty;
 
 
-import codec.AddCodec;
+import com.rpc.zeng.common.codec.AddCodec;
 import com.rpc.zeng.consumer.netty_client_handler.NettyClientHandler22;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;

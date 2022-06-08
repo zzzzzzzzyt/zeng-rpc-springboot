@@ -1,12 +1,9 @@
 package com.rpc.zeng.consumer.service_discovery;
 
-import annotation.LoadBalanceMethodImpl;
 import com.rpc.zeng.common.annotation.LoadBalanceMethodImpl;
 import com.rpc.zeng.common.configuration.GlobalConfiguration;
+import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.consumer.nio.NIONonBlockingClient12;
-import configuration.GlobalConfiguration;
-import consumer.nio.NIONonBlockingClient12;
-import exception.RpcException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -17,7 +14,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
-import static constants.RpcConstants.ZOOKEEPER_ADDRESS;
 
 //简化zookeeper的使用  更加方便获取远端的方法的信息
 

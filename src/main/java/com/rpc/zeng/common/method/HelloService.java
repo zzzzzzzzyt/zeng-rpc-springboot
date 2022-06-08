@@ -1,7 +1,7 @@
 package com.rpc.zeng.common.method;
 
 /**
- * @author ףӢ̨ը����
+ * @author 祝英台
  */
 public interface HelloService {
     String sayHello(String saying);

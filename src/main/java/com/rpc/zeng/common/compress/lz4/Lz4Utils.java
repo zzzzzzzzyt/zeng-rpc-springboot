@@ -2,6 +2,7 @@ package com.rpc.zeng.common.compress.lz4;
 
 import com.rpc.zeng.common.compress.CompressType;
 import lombok.extern.slf4j.Slf4j;
+import net.jpountz.lz4.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

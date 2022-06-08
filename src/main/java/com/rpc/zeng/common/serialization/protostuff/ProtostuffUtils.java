@@ -5,7 +5,6 @@ import io.protostuff.LinkedBuffer;
 import io.protostuff.ProtostuffIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;
-import serialization.Serializer;
 
 
 //进行序列化和反序列化  这些是固定的代码

@@ -1,12 +1,12 @@
 package com.rpc.zeng.provider.netty;
 
+import com.rpc.zeng.provider.netty_server_handler.NettyServerHandler20;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
-import provider.netty_server_handler.NettyServerHandler20;
 
 
 //简单实现  主要还是进行了一段回想

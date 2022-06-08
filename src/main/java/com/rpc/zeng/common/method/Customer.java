@@ -2,8 +2,6 @@ package com.rpc.zeng.common.method;
 
 import com.rpc.zeng.common.entity.Person;
 import com.rpc.zeng.common.entity.PersonPOJO;
-import entity.Person;
-import entity.PersonPOJO;
 
 //这是之后要被代理的对象 我们会实现它的方法
 
