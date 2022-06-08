@@ -7,7 +7,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 
 import java.nio.charset.StandardCharsets;
 
-import static constants.RpcConstants.ZOOKEEPER_ADDRESS;
+import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
 
 
 //通过curator简化 zookeeper对相应的服务端服务注册的流程 更轻松的看懂

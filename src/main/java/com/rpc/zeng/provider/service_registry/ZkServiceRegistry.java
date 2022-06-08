@@ -10,8 +10,8 @@ import org.apache.zookeeper.data.Stat;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import static constants.RpcConstants.ZOOKEEPER_ADDRESS;
-import static constants.RpcConstants.ZOOKEEPER_SESSION_TIMEOUT;
+import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
+import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_SESSION_TIMEOUT;
 
 
 //该类将对应服务端的方法和相应的端口和地址，注册到zooKeeper中
