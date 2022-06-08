@@ -192,6 +192,21 @@
             <artifactId>spring-jdbc</artifactId>
             <version>5.3.20</version>
         </dependency>
+
+
+        <!--mysql-connector-java就是帮助java程序操作mysql的驱动程序。通过与mysql服务端建立连接，发送sql语句并且获取结果集-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
+        </dependency>
+
+        <!--主要提供了三个功能：第一个是对数据源的装配，第二个是提供一个JdbcTemplate简化使用，第三个是事务。-->
+        <!--其实这里并不用配置  因为底下的mybatis的启动类已经引入了对应包-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

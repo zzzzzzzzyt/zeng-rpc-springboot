@@ -3,8 +3,9 @@ package com.rpc.zeng.common.monitor;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rpc.zeng.common.exception.RpcException;
-import com.rpc.zeng.common.monitor.mapper.RpcMonitorMapper;
+import com.rpc.zeng.common.monitor.service.RpcMonitorService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,26 +16,22 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 @Slf4j
 public class RpcMonitorOperator {
 
-    static RpcMonitorMapper rpcMonitorMapper;
-
-    static {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-mybatis.xml");
-        rpcMonitorMapper = context.getBean(RpcMonitorMapper.class);
-    }
+    @Autowired
+    static RpcMonitorService rpcMonitorService;
 
 
     /**
      * 作用 就是每次开启服务提供商的时候 删除掉所有的对应项目
      */
     public void deleteAll() {
-        rpcMonitorMapper.delete(null);
+        rpcMonitorService.remove(null);
     }
 
     /**
      * 每次开启服务的时候 就进行添加对应的服务 当然 起始调用次数为0
      */
     public void addServer(RpcMonitor rpcMonitorServer) {
-        rpcMonitorMapper.insert(rpcMonitorServer);
+        rpcMonitorService.save(rpcMonitorServer);
     }
 
     /**
@@ -44,7 +41,7 @@ public class RpcMonitorOperator {
         QueryWrapper<RpcMonitor> wrapper = new QueryWrapper<>();
         // 没问题 查询的时候 是跟对应的列名进行比较
         wrapper.eq("method_name", methodAddress);
-        RpcMonitor rpcMonitor = rpcMonitorMapper.selectOne(wrapper);
+        RpcMonitor rpcMonitor = rpcMonitorService.getOne(wrapper);
         if (rpcMonitor == null) try {
             throw new RpcException("监控中心出现错误");
         } catch (RpcException e) {
@@ -53,6 +50,6 @@ public class RpcMonitorOperator {
         }
         rpcMonitor.setCallNum(rpcMonitor.getCallNum() + 1);
         rpcMonitor.setCallTime(null);
-        rpcMonitorMapper.update(rpcMonitor, new QueryWrapper<RpcMonitor>().eq("id", rpcMonitor.getId()));
+        rpcMonitorService.update(rpcMonitor, new QueryWrapper<RpcMonitor>().eq("id", rpcMonitor.getId()));
     }
 }
