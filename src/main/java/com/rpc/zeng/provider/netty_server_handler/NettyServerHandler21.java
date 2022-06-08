@@ -1,6 +1,7 @@
 package com.rpc.zeng.provider.netty_server_handler;
 
 
+import com.rpc.zeng.common.constants.MethodPath;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,7 @@ public class NettyServerHandler21 extends ChannelInboundHandlerAdapter {
         //使用反射的方法获取对应的类 通过反射再进行执行
         Object response = null;
         try {
-            Class<?> calledClass = Class.forName("provider.api." + methodName + "ServiceImpl");
+            Class<?> calledClass = Class.forName(MethodPath.API_ADDRESS  + methodName + "ServiceImpl");
             Method method = calledClass.getMethod("say" + methodName, String.class);
             Object instance = calledClass.newInstance();
             response = method.invoke(instance, msg.toString());

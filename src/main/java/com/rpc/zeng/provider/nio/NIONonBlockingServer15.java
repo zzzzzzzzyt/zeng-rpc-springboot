@@ -1,5 +1,6 @@
 package com.rpc.zeng.provider.nio;
 
+import com.rpc.zeng.common.constants.MethodPath;
 import com.rpc.zeng.provider.utils.MethodRegister;
 import lombok.extern.slf4j.Slf4j;
 
@@ -110,7 +111,7 @@ public class NIONonBlockingServer15 {
                         //这里要有新逻辑了 根据获得的方法名 去找到相应的方法
                         //方法我们保存在固定位置 同时含有固定后缀
                         String className = method + "ServiceImpl";
-                        Class<?> methodClass = Class.forName("provider.api." + className);
+                        Class<?> methodClass = Class.forName(MethodPath.API_ADDRESS  + className);
                         //实例 要获取对应的实例 或者子对象才能进行反射执行方法
                         Object instance = methodClass.newInstance();
 

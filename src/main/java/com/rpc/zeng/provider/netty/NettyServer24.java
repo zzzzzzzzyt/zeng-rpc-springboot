@@ -2,6 +2,7 @@ package com.rpc.zeng.provider.netty;
 
 
 import com.rpc.zeng.common.codec.AddCodec;
+import com.rpc.zeng.common.constants.MethodPath;
 import com.rpc.zeng.provider.netty_server_handler.NettyServerHandler24;
 import com.rpc.zeng.provider.utils.MethodRegister;
 import io.netty.bootstrap.ServerBootstrap;
@@ -50,7 +51,7 @@ public class NettyServer24 {
                             //添加的处理器 根据相应的注解而定
                             Method method = null;
                             try {
-                                method = Class.forName("provider.api." + methodName + "ServiceImpl").getMethods()[0];
+                                method = Class.forName(MethodPath.API_ADDRESS  + methodName + "ServiceImpl").getMethods()[0];
                             } catch (ClassNotFoundException e) {
                                 log.error(e.getMessage(), e);
                             }
