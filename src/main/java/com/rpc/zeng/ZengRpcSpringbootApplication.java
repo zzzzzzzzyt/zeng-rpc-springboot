@@ -9,5 +9,4 @@ public class ZengRpcSpringbootApplication {
     public static void main(String[] args) {
         SpringApplication.run(ZengRpcSpringbootApplication.class, args);
     }
-
 }
