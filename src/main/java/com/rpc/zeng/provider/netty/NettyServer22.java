@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
 public class NettyServer22 {
     public static void start(String methodName, int port, ParameterSettings parameterSettings) {
         //真正的实现逻辑 被封装到下面的方法当中了
-        start0(methodName, port,parameterSettings);
+        start0(methodName, port, parameterSettings);
     }
 
     private static void start0(String methodName, int port, ParameterSettings parameterSettings) {
@@ -52,14 +52,14 @@ public class NettyServer22 {
                             //添加的处理器 根据相应的注解而定
                             Method method = null;
                             try {
-                                method = Class.forName(MethodPath.API_ADDRESS  + methodName + "ServiceImpl").getMethods()[0];
+                                method = Class.forName(MethodPath.API_ADDRESS + methodName + "ServiceImpl").getMethods()[0];
                             } catch (ClassNotFoundException e) {
                                 log.error(e.getMessage(), e);
                             }
                             assert method != null;
                             AddCodec.addCodec(pipeline, method, false, parameterSettings);
                             //传入的直接是方法本身了 而不是方法名字
-                            pipeline.addLast(new NettyServerHandler22(methodName,parameterSettings));
+                            pipeline.addLast(new NettyServerHandler22(methodName, parameterSettings));
 
                         }
                     });

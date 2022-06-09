@@ -24,12 +24,12 @@ import java.lang.reflect.Method;
 public class NettyServer24 {
     public static void start(String methodName, int port, ParameterSettings parameterSettings) {
         //真正的实现逻辑 被封装到下面的方法当中了
-        start0(methodName, port,parameterSettings);
+        start0(methodName, port, parameterSettings);
     }
 
     private static void start0(String methodName, int port, ParameterSettings parameterSettings) {
         //先将地址进行注册
-        MethodRegister.register(methodName, "127.0.0.1", port,parameterSettings);
+        MethodRegister.register(methodName, "127.0.0.1", port, parameterSettings);
 
         //开始创建相应的netty服务端
         ServerBootstrap serverBootstrap = new ServerBootstrap();
@@ -52,15 +52,15 @@ public class NettyServer24 {
                             //添加的处理器 根据相应的注解而定
                             Method method = null;
                             try {
-                                method = Class.forName(MethodPath.API_ADDRESS  + methodName + "ServiceImpl").getMethods()[0];
+                                method = Class.forName(MethodPath.API_ADDRESS + methodName + "ServiceImpl").getMethods()[0];
                             } catch (ClassNotFoundException e) {
                                 log.error(e.getMessage(), e);
                             }
                             assert method != null;
-                            AddCodec.addCodec(pipeline, method, false,parameterSettings);
+                            AddCodec.addCodec(pipeline, method, false, parameterSettings);
 
                             //传入的直接是方法本身了 而不是方法名字
-                            pipeline.addLast(new NettyServerHandler24(methodName,parameterSettings));
+                            pipeline.addLast(new NettyServerHandler24(methodName, parameterSettings));
                         }
                     });
 

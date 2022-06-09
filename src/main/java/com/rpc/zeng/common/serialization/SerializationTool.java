@@ -1,7 +1,5 @@
 package com.rpc.zeng.common.serialization;
 
-import com.rpc.zeng.common.annotation.RpcSerializationSelector;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.serialization.fst.FSTUtils;
 import com.rpc.zeng.common.serialization.hessian.HessianUtils;

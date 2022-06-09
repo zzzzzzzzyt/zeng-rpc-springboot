@@ -1,9 +1,7 @@
 package com.rpc.zeng.provider.netty_server_handler;
 
 
-import com.rpc.zeng.common.annotation.CompressFunction;
 import com.rpc.zeng.common.compress.CompressTypeTool;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.constants.MethodPath;
 import com.rpc.zeng.common.serialization.SerializationTool;
 import com.rpc.zeng.domain.ParameterSettings;
@@ -34,12 +32,10 @@ public class NettyServerHandler24 extends ChannelInboundHandlerAdapter {
     //要传入对应的方法名 否则不知道 netty服务器能执行什么方法
     public NettyServerHandler24(String methodName, ParameterSettings parameterSettings) {
         this.methodName = methodName;
-        this.compressTool= new CompressTypeTool(parameterSettings);
+        this.compressTool = new CompressTypeTool(parameterSettings);
         this.serializationTool = new SerializationTool(parameterSettings);
         this.openFunction = Objects.equals(parameterSettings.getIsCompress(), "1");
     }
-
-
 
 
     //实现对应的方法

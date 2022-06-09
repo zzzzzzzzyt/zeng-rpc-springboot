@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 public class NettyServer21 {
     public static void start(String methodName, int port, ParameterSettings parameterSettings) {
         //真正的实现逻辑 被封装到下面的方法当中了
-        start0(methodName, port,parameterSettings);
+        start0(methodName, port, parameterSettings);
     }
 
     private static void start0(String methodName, int port, ParameterSettings parameterSettings) {
