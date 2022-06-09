@@ -16,8 +16,6 @@ import lombok.extern.slf4j.Slf4j;
  * @author 祝英台炸油条
  */
 @Slf4j
-@RpcClientBootStrap(version = "2.4")
-@RpcToolsSelector(rpcTool = "Netty")
 public class ClientCall {
     public static void main(ParameterSettings parameterSettings) {
         //实现调用

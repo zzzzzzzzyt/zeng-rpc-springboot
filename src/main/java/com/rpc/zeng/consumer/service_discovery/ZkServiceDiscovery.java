@@ -3,7 +3,12 @@ package com.rpc.zeng.consumer.service_discovery;
 import com.rpc.zeng.common.annotation.LoadBalanceMethodImpl;
 import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.exception.RpcException;
+import com.rpc.zeng.common.loadbalance.AccessLoadBalance;
+import com.rpc.zeng.common.loadbalance.ConsistentLoadBalance;
+import com.rpc.zeng.common.loadbalance.LoadBalance;
+import com.rpc.zeng.common.loadbalance.RandomLoadBalance;
 import com.rpc.zeng.consumer.nio.NIONonBlockingClient12;
+import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
@@ -33,7 +38,7 @@ public class ZkServiceDiscovery {
 
 
     // 根据所请求的服务地址 获取对应的远端地址
-    public static String getMethodAddress(String methodName) {
+    public static String getMethodAddress(String methodName, ParameterSettings parameterSettings) {
         //获取对应线程中的zookeeper
         ZooKeeper zooKeeper = zooKeeperThreadLocal.get();
 
@@ -44,12 +49,18 @@ public class ZkServiceDiscovery {
             }
             String prePath = "/service/" + methodName;
             //v1.5修改使用负载均衡策略 根据接口上注解选择的实现类进行调用
-            LoadBalanceMethodImpl annotation = GlobalConfiguration.class.getAnnotation(LoadBalanceMethodImpl.class);
-            Class methodClass = annotation.chosenMethod();
-            Method method = methodClass.getMethod("loadBalance", ZooKeeper.class, String.class);
-            //被选中的负载均衡实现类的对象  通过反射执行  获取对应的地址
-            Object methodChosenClass = methodClass.newInstance();
-            return (String) method.invoke(methodChosenClass, zooKeeper, prePath);
+            LoadBalance nowLoadBalance;
+            switch (parameterSettings.getLoadBalanceMethod()) {
+                case "RandomLoadBalance":
+                    nowLoadBalance = new RandomLoadBalance();
+                    break;
+                case "ConsistentLoadBalance":
+                    nowLoadBalance = new ConsistentLoadBalance();
+                    break;
+                default:
+                    nowLoadBalance = new AccessLoadBalance();
+            }
+            return nowLoadBalance.loadBalance(zooKeeper,prePath);
         } catch (KeeperException | InterruptedException | RpcException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             log.error(e.getMessage(), e);
             return null;
@@ -57,15 +68,4 @@ public class ZkServiceDiscovery {
     }
 
 
-    public static String getStart(String methodName, String msg) {
-        //获取相应的远端地址
-        String methodAddress = getMethodAddress(methodName);
-        //进行连接
-        assert methodAddress != null;
-        String[] strings = methodAddress.split(":");
-        //启动
-        String address = strings[0];
-        int port = Integer.parseInt(strings[1]);
-        return NIONonBlockingClient12.start(address, port, msg);
-    }
 }

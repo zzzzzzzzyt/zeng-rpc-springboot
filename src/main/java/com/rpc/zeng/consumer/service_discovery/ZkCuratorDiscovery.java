@@ -3,7 +3,12 @@ package com.rpc.zeng.consumer.service_discovery;
 import com.rpc.zeng.common.annotation.LoadBalanceMethodImpl;
 import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.exception.RpcException;
+import com.rpc.zeng.common.loadbalance.AccessLoadBalance;
+import com.rpc.zeng.common.loadbalance.ConsistentLoadBalance;
+import com.rpc.zeng.common.loadbalance.LoadBalance;
+import com.rpc.zeng.common.loadbalance.RandomLoadBalance;
 import com.rpc.zeng.consumer.nio.NIONonBlockingClient12;
+import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -24,7 +29,7 @@ import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
 public class ZkCuratorDiscovery {
 
     //获取对应的地址
-    public static String getMethodAddress(String methodName) {
+    public static String getMethodAddress(String methodName, ParameterSettings parameterSettings) {
         //创建连接后 获取对应的地址 地址和对应的端口信息 传入即可
         //同时还要实现负载均衡
         //BackoffRetry 退避策略，决定失败后如何确定补偿值。
@@ -52,15 +57,19 @@ public class ZkCuratorDiscovery {
         //v1.5修改使用负载均衡策略 根据接口上注解选择的实现类进行调用
         String methodAddress = null;
         try {
-            LoadBalanceMethodImpl annotation = GlobalConfiguration.class.getAnnotation(LoadBalanceMethodImpl.class);
-            Class methodClass = annotation.chosenMethod();
-            Method method = methodClass.getMethod("loadBalance", ZooKeeper.class, String.class);
-            //被选中的负载均衡实现类的对象  通过反射执行  获取对应的地址
-            Object methodChosenClass = methodClass.newInstance();
-            methodAddress = (String) method.invoke(methodChosenClass, zooKeeper, prePath);
+            LoadBalance nowLoadBalance;
+            switch (parameterSettings.getLoadBalanceMethod()) {
+                case "RandomLoadBalance":
+                    nowLoadBalance = new RandomLoadBalance();
+                    break;
+                case "ConsistentLoadBalance":
+                    nowLoadBalance = new ConsistentLoadBalance();
+                    break;
+                default:
+                    nowLoadBalance = new AccessLoadBalance();
+            }
+            methodAddress = nowLoadBalance.loadBalance(zooKeeper,prePath);
             client.close();
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            log.error(e.getMessage(), e);
         } finally {
             client.close();
         }
@@ -68,13 +77,4 @@ public class ZkCuratorDiscovery {
     }
 
 
-    public static String getStart(String methodName, String msg) {
-        String methodAddress = getMethodAddress(methodName);
-        assert methodAddress != null;
-        String[] strings = methodAddress.split(":");
-        //启动
-        String address = strings[0];
-        int port = Integer.parseInt(strings[1]);
-        return NIONonBlockingClient12.start(address, port, msg);
-    }
 }

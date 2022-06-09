@@ -12,6 +12,7 @@ import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 
 
@@ -35,7 +36,7 @@ public class NettyClientHandler24 extends ChannelInboundHandlerAdapter implement
     private SerializationTool serializationTool;
 
     //判断是否进行解压缩
-    static boolean openFunction = GlobalConfiguration.class.getAnnotation(CompressFunction.class).isOpenFunction();
+    static boolean openFunction;
 
     //解压缩工具
     private CompressTypeTool compressTool;
@@ -43,6 +44,7 @@ public class NettyClientHandler24 extends ChannelInboundHandlerAdapter implement
     public NettyClientHandler24(ParameterSettings parameterSettings) {
         serializationTool = new SerializationTool(parameterSettings);
         compressTool = new CompressTypeTool(parameterSettings);
+        openFunction = Objects.equals(parameterSettings.getIsCompress(), "1");
     }
 
     public void setParam(Object param) {

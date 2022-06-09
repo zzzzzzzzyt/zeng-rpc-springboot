@@ -34,7 +34,7 @@ public class NettyClient22 {
 
     public static void initClient(String hostName, int port, Method method, ParameterSettings parameterSettings) {
 
-        clientHandler = new NettyClientHandler22();
+        clientHandler = new NettyClientHandler22(parameterSettings);
         //建立客户端监听
         Bootstrap bootstrap = new Bootstrap();
         EventLoopGroup workGroup = new NioEventLoopGroup();

@@ -5,6 +5,7 @@ import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.serialization.hessian.HessianUtils;
 import com.rpc.zeng.common.serialization.kryo.KryoUtils;
 import com.rpc.zeng.common.serialization.protostuff.ProtostuffUtils;
+import com.rpc.zeng.domain.ParameterSettings;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,11 @@ public class NettyClientHandler22 extends ChannelInboundHandlerAdapter implement
     private boolean isProtostuff;
     private boolean isKryo;
     private boolean isHessian;
+    private ParameterSettings parameterSettings;
+
+    public NettyClientHandler22(ParameterSettings parameterSettings) {
+        this.parameterSettings = parameterSettings;
+    }
 
     public void setParam(Object param) {
         this.param = param;
@@ -36,10 +42,18 @@ public class NettyClientHandler22 extends ChannelInboundHandlerAdapter implement
     public void channelActive(ChannelHandlerContext ctx) {
         context = ctx;
         log.info("U•ェ•*U 成功连接");
-        String serialization = GlobalConfiguration.class.getAnnotation(RpcSerializationSelector.class).RpcSerialization();
-        if (serialization.equals("protostuff")) isProtostuff = true;
-        else if (serialization.equals("kryo")) isKryo = true;
-        else if (serialization.equals("hessian")) isHessian = true;
+        String serialization = parameterSettings.getRpcSerialization();
+        switch (serialization) {
+            case "protostuff":
+                isProtostuff = true;
+                break;
+            case "kryo":
+                isKryo = true;
+                break;
+            case "hessian":
+                isHessian = true;
+                break;
+        }
     }
 
     @Override

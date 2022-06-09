@@ -1,7 +1,6 @@
 package com.rpc.zeng.consumer.proxy.netty;
 
 import com.rpc.zeng.common.annotation.RegistryChosen;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.monitor.RpcMonitorOperator;
 import com.rpc.zeng.consumer.netty.NettyClient;
@@ -62,9 +61,9 @@ public class RpcNettyClientJDKProxy implements ClientProxy {
             case "nacos":
                 return NacosServiceDiscovery.getMethodAddress(methodName);
             case "zookeeper":
-                return ZkServiceDiscovery.getMethodAddress(methodName);
+                return ZkServiceDiscovery.getMethodAddress(methodName, parameterSettings);
             case "zkCurator":
-                return ZkCuratorDiscovery.getMethodAddress(methodName);
+                return ZkCuratorDiscovery.getMethodAddress(methodName, parameterSettings);
             default:
                 try {
                     throw new RpcException("不存在该注册中心");

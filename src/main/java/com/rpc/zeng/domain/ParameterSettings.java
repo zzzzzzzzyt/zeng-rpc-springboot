@@ -14,4 +14,6 @@ public class ParameterSettings {
     private String registryName;
     private String rpcSerialization;
     private String clientProxy;
+    private String loadBalanceMethod;
+    private String isCompress;
 }

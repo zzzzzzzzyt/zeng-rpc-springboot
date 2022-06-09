@@ -59,7 +59,7 @@ public class NettyServer22 {
                             assert method != null;
                             AddCodec.addCodec(pipeline, method, false, parameterSettings);
                             //传入的直接是方法本身了 而不是方法名字
-                            pipeline.addLast(new NettyServerHandler22(methodName));
+                            pipeline.addLast(new NettyServerHandler22(methodName,parameterSettings));
 
                         }
                     });

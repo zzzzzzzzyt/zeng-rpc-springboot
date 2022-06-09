@@ -26,6 +26,8 @@ public class RpcController {
         parameterSettings.setRegistryName("zookeeper");
         parameterSettings.setRpcSerialization("fastjson");
         parameterSettings.setClientProxy("RpcNettyClientCGLIBProxy");
+        parameterSettings.setIsCompress("1");
+        parameterSettings.setLoadBalanceMethod("RandomLoadBalance");
     }
 
 
@@ -33,22 +35,32 @@ public class RpcController {
      * 参数设置
      */
     @PostMapping("/parameterSettings")
-    public void parameterSettings(@RequestBody ParameterSettingsRequest parameterSettingsRequest){
+    public void parameterSettings(@RequestBody ParameterSettingsRequest parameterSettingsRequest) {
         if (!StringUtils.isBlank(parameterSettingsRequest.getVersion())) {
             parameterSettings.setVersion(parameterSettingsRequest.getVersion());
         }
-        if (!StringUtils.isBlank(parameterSettingsRequest.getRpcTool())){
+        if (!StringUtils.isBlank(parameterSettingsRequest.getRpcTool())) {
             parameterSettings.setRpcTool(parameterSettingsRequest.getRpcTool());
         }
-        if (!StringUtils.isBlank(parameterSettingsRequest.getCompressTool())){
+        if (!StringUtils.isBlank(parameterSettingsRequest.getCompressTool())) {
             parameterSettings.setCompressTool(parameterSettingsRequest.getCompressTool());
         }
-        if (!StringUtils.isBlank(parameterSettingsRequest.getRegistryName())){
+        if (!StringUtils.isBlank(parameterSettingsRequest.getRegistryName())) {
             parameterSettings.setRegistryName(parameterSettingsRequest.getRegistryName());
         }
-        if (!StringUtils.isBlank(parameterSettingsRequest.getRpcSerialization())){
+        if (!StringUtils.isBlank(parameterSettingsRequest.getRpcSerialization())) {
             parameterSettings.setRpcSerialization(parameterSettingsRequest.getRpcSerialization());
         }
+        if (!StringUtils.isBlank(parameterSettingsRequest.getClientProxy())) {
+            parameterSettings.setClientProxy(parameterSettingsRequest.getClientProxy());
+        }
+        if (!StringUtils.isBlank(parameterSettingsRequest.getIsCompress())) {
+            parameterSettings.setIsCompress(parameterSettingsRequest.getIsCompress());
+        }
+        if (!StringUtils.isBlank(parameterSettingsRequest.getLoadBalanceMethod())) {
+            parameterSettings.setLoadBalanceMethod(parameterSettingsRequest.getLoadBalanceMethod());
+        }
+
 
     }
 
@@ -59,7 +71,6 @@ public class RpcController {
     public void providerNetty() {
         ServerCall.main(parameterSettings);
     }
-
 
 
     /**

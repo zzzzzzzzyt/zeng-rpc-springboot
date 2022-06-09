@@ -78,9 +78,9 @@ public class RpcNettyClientCGLIBProxy implements ClientProxy, MethodInterceptor 
             case "nacos":
                 return NacosServiceDiscovery.getMethodAddress(methodName);
             case "zookeeper":
-                return ZkServiceDiscovery.getMethodAddress(methodName);
+                return ZkServiceDiscovery.getMethodAddress(methodName,parameterSettings);
             case "zkCurator":
-                return ZkCuratorDiscovery.getMethodAddress(methodName);
+                return ZkCuratorDiscovery.getMethodAddress(methodName,parameterSettings);
             default:
                 try {
                     throw new RpcException("不存在该注册中心");

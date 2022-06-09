@@ -8,6 +8,7 @@ import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.serialization.hessian.HessianUtils;
 import com.rpc.zeng.common.serialization.kryo.KryoUtils;
 import com.rpc.zeng.common.serialization.protostuff.ProtostuffUtils;
+import com.rpc.zeng.domain.ParameterSettings;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -26,10 +27,12 @@ public class NettyServerHandler22 extends ChannelInboundHandlerAdapter {
     private boolean isProtostuff;
     private boolean isKryo;
     private boolean isHessian;
+    private ParameterSettings parameterSettings;
 
     //要传入对应的方法名 否则不知道 netty服务器能执行什么方法
-    public NettyServerHandler22(String methodName) {
+    public NettyServerHandler22(String methodName, ParameterSettings parameterSettings) {
         this.methodName = methodName;
+        this.parameterSettings = parameterSettings;
     }
 
     //实现对应的方法
@@ -37,7 +40,7 @@ public class NettyServerHandler22 extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        String serialization = GlobalConfiguration.class.getAnnotation(RpcSerializationSelector.class).RpcSerialization();
+        String serialization = parameterSettings.getRpcSerialization();
         switch (serialization) {
             case "protostuff":
                 isProtostuff = true;

@@ -42,15 +42,4 @@ public class NacosServiceDiscovery {
         return ip + ":" + port;
     }
 
-    public static String getStart(String methodName, String msg) {
-        //获取相应的远端地址
-
-        String methodAddress = getMethodAddress(methodName);
-        //进行连接
-        String[] strings = methodAddress.split(":");
-        //启动
-        String address = strings[0];
-        int port = Integer.parseInt(strings[1]);
-        return NIONonBlockingClient12.start(address, port, msg);
-    }
 }

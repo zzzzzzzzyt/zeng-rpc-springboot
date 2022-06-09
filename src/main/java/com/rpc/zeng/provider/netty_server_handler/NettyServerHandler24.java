@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 
 /*
@@ -28,19 +29,17 @@ public class NettyServerHandler24 extends ChannelInboundHandlerAdapter {
     private final String methodName;
     private CompressTypeTool compressTool;
     private SerializationTool serializationTool;
+    private boolean openFunction;
 
     //要传入对应的方法名 否则不知道 netty服务器能执行什么方法
     public NettyServerHandler24(String methodName, ParameterSettings parameterSettings) {
         this.methodName = methodName;
         this.compressTool= new CompressTypeTool(parameterSettings);
         this.serializationTool = new SerializationTool(parameterSettings);
+        this.openFunction = Objects.equals(parameterSettings.getIsCompress(), "1");
     }
 
-    //静态实现序列化工具类
-    //获得是否进行解压缩
-    static boolean openFunction = GlobalConfiguration.class.getAnnotation(CompressFunction.class).isOpenFunction();
 
-    //解压缩工具
 
 
     //实现对应的方法
