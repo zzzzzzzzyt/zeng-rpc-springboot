@@ -26,7 +26,7 @@ public class NettyProviderBootStrap21 {
         for (int i = 0; i < methodArray.length; i++) {
             String methodName = methodArray[i];
             for (int methodNum = 0; methodNum < Integer.parseInt(methodNumArray[i]); methodNum++) {
-                new Thread(() -> NettyServer21.start(methodName, port++,parameterSettings)).start();
+                new Thread(() -> NettyServer21.start(methodName, port++, parameterSettings)).start();
             }
         }
     }

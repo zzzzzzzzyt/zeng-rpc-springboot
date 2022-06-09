@@ -1,22 +1,16 @@
 package com.rpc.zeng.consumer.service_discovery;
 
-import com.rpc.zeng.common.annotation.LoadBalanceMethodImpl;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.loadbalance.AccessLoadBalance;
 import com.rpc.zeng.common.loadbalance.ConsistentLoadBalance;
 import com.rpc.zeng.common.loadbalance.LoadBalance;
 import com.rpc.zeng.common.loadbalance.RandomLoadBalance;
-import com.rpc.zeng.consumer.nio.NIONonBlockingClient12;
 import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.ZooKeeper;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
 
@@ -68,7 +62,7 @@ public class ZkCuratorDiscovery {
                 default:
                     nowLoadBalance = new AccessLoadBalance();
             }
-            methodAddress = nowLoadBalance.loadBalance(zooKeeper,prePath);
+            methodAddress = nowLoadBalance.loadBalance(zooKeeper, prePath);
             client.close();
         } finally {
             client.close();

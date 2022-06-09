@@ -1,8 +1,6 @@
 package com.rpc.zeng.call.service;
 
 import com.rpc.zeng.call.service.call.ChosenClientCall;
-import com.rpc.zeng.common.annotation.RpcClientBootStrap;
-import com.rpc.zeng.common.annotation.RpcToolsSelector;
 import com.rpc.zeng.common.entity.Person;
 import com.rpc.zeng.common.method.Customer;
 import com.rpc.zeng.domain.ParameterSettings;

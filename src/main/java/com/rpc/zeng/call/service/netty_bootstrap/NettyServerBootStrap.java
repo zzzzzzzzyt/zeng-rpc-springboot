@@ -56,10 +56,10 @@ public class NettyServerBootStrap {
                 NettyProviderBootStrap20.main(new String[]{"127.0.0.1", String.valueOf(6668)});
                 break;
             case "2.1":
-                NettyProviderBootStrap21.main(new String[]{methodBuilder.toString(), numBuilder.toString()},parameterSettings);
+                NettyProviderBootStrap21.main(new String[]{methodBuilder.toString(), numBuilder.toString()}, parameterSettings);
                 break;
             case "2.2": //沿用 就是 做个区分  这个版本时进行序列化的测试
-                NettyProviderBootStrap22.main(new String[]{methodBuilder.toString(), numBuilder.toString()},parameterSettings);
+                NettyProviderBootStrap22.main(new String[]{methodBuilder.toString(), numBuilder.toString()}, parameterSettings);
                 break;
             case "2.4": //这个版本是个大版本 各种序列化工具出现和使用
             case "2.5":
@@ -69,7 +69,7 @@ public class NettyServerBootStrap {
             case "2.9":
             case "2.10":
             case "2.11":
-                NettyProviderBootStrap24.main(new String[]{methodBuilder.toString(), numBuilder.toString()},parameterSettings);
+                NettyProviderBootStrap24.main(new String[]{methodBuilder.toString(), numBuilder.toString()}, parameterSettings);
                 break;
             default:
                 try {

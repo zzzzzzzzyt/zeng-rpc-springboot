@@ -44,7 +44,7 @@ public class NettyProviderBootStrap24 {
                 rpcMonitorOperator.addServer(rpcMonitor);
                 int nowPort = port.get();
                 //因为下面这个开启一个线程 会慢一点
-                new Thread(() -> NettyServer24.start(methodName, nowPort,parameterSettings)).start();
+                new Thread(() -> NettyServer24.start(methodName, nowPort, parameterSettings)).start();
                 port.incrementAndGet();
             }
         }

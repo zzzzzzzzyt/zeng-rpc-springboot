@@ -61,10 +61,10 @@ public class NettyClient22 {
         }
     }
 
-    public static Object callMethod(String hostName, int port, Object param, Method method ,ParameterSettings parameterSettings) {
+    public static Object callMethod(String hostName, int port, Object param, Method method, ParameterSettings parameterSettings) {
 
         //我是有多个地方进行调用的 不能只连接一个
-        initClient(hostName, port, method,parameterSettings);
+        initClient(hostName, port, method, parameterSettings);
         clientHandler.setParam(param);
         //接下来这就有关系到调用 直接调用
         try {

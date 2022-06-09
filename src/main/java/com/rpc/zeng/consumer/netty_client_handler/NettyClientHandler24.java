@@ -1,9 +1,7 @@
 package com.rpc.zeng.consumer.netty_client_handler;
 
 
-import com.rpc.zeng.common.annotation.CompressFunction;
 import com.rpc.zeng.common.compress.CompressTypeTool;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.serialization.SerializationTool;
 import com.rpc.zeng.domain.ParameterSettings;
 import io.netty.channel.ChannelHandlerContext;
@@ -36,7 +34,7 @@ public class NettyClientHandler24 extends ChannelInboundHandlerAdapter implement
     private SerializationTool serializationTool;
 
     //判断是否进行解压缩
-    static boolean openFunction;
+    private boolean openFunction;
 
     //解压缩工具
     private CompressTypeTool compressTool;

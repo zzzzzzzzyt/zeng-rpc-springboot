@@ -1,7 +1,5 @@
 package com.rpc.zeng.call.service.netty_bootstrap;
 
-import com.rpc.zeng.call.service.ClientCall;
-import com.rpc.zeng.common.annotation.RpcClientBootStrap;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.method.Customer;
 import com.rpc.zeng.consumer.bootstrap.netty.NettyConsumerBootStrap20;

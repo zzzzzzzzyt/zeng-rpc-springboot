@@ -3,14 +3,12 @@ package com.rpc.zeng.common.compress;
 
 //实际调用 通过SPI机制
 
-import com.rpc.zeng.common.annotation.CompressSelector;
 import com.rpc.zeng.common.compress.bzip.BZipUtils;
 import com.rpc.zeng.common.compress.deflater.DeflaterUtils;
 import com.rpc.zeng.common.compress.diyzip.DiyZipUtils;
 import com.rpc.zeng.common.compress.gzip.GZipUtils;
 import com.rpc.zeng.common.compress.lz4.Lz4Utils;
 import com.rpc.zeng.common.compress.zip.ZipUtils;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +35,7 @@ public class CompressTypeTool implements CompressType {
 
 
     //通过注解获取对应的工具
-    public CompressTypeTool(ParameterSettings parameterSettings){
+    public CompressTypeTool(ParameterSettings parameterSettings) {
         switch (parameterSettings.getCompressTool()) {
             case "BZipUtils":
                 compressUtils = new BZipUtils();

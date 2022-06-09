@@ -1,7 +1,5 @@
 package com.rpc.zeng.consumer.proxy.netty;
 
-import com.rpc.zeng.common.annotation.RegistryChosen;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.monitor.RpcMonitorOperator;
 import com.rpc.zeng.consumer.netty.NettyClient;
@@ -52,7 +50,7 @@ public class RpcNettyClientCGLIBProxy implements ClientProxy, MethodInterceptor 
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy) {
         String methodAddress = null;
         try {
-            methodAddress = getMethodAddress(method.getName(),parameterSettings);
+            methodAddress = getMethodAddress(method.getName(), parameterSettings);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
@@ -70,7 +68,7 @@ public class RpcNettyClientCGLIBProxy implements ClientProxy, MethodInterceptor 
     /**
      * 实际去获得对应的服务 并完成方法调用的方法
      *
-     * @param methodName 根据方法名  根据添加的注册中心注解来选择相应的注册中心进行  实现负载均衡获取一个方法对应地址
+     * @param methodName        根据方法名  根据添加的注册中心注解来选择相应的注册中心进行  实现负载均衡获取一个方法对应地址
      * @param parameterSettings
      */
     private static String getMethodAddress(String methodName, ParameterSettings parameterSettings) {
@@ -78,9 +76,9 @@ public class RpcNettyClientCGLIBProxy implements ClientProxy, MethodInterceptor 
             case "nacos":
                 return NacosServiceDiscovery.getMethodAddress(methodName);
             case "zookeeper":
-                return ZkServiceDiscovery.getMethodAddress(methodName,parameterSettings);
+                return ZkServiceDiscovery.getMethodAddress(methodName, parameterSettings);
             case "zkCurator":
-                return ZkCuratorDiscovery.getMethodAddress(methodName,parameterSettings);
+                return ZkCuratorDiscovery.getMethodAddress(methodName, parameterSettings);
             default:
                 try {
                     throw new RpcException("不存在该注册中心");

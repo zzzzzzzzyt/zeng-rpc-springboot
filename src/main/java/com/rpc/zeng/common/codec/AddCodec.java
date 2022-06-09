@@ -1,7 +1,5 @@
 package com.rpc.zeng.common.codec;
 
-import com.rpc.zeng.common.annotation.RpcSerializationSelector;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.entity.PersonPOJO;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.domain.ParameterSettings;
@@ -81,7 +79,7 @@ public class AddCodec {
                         //根据传入传出进行对应的编码
                         pipeline.addLast(new StringEncoder());
                         pipeline.addLast(new ProtobufDecoder(PersonPOJO.Person.getDefaultInstance()));
-                        ;
+
                     } else {
                         pipeline.addLast(new ProtobufEncoder());
                         pipeline.addLast(new StringDecoder());

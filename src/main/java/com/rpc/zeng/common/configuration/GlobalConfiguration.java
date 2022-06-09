@@ -1,8 +1,6 @@
 package com.rpc.zeng.common.configuration;
 
-import com.rpc.zeng.common.annotation.CompressFunction;
 import com.rpc.zeng.common.annotation.HeartBeatTool;
-
 
 
 @HeartBeatTool(isOpenFunction = true,

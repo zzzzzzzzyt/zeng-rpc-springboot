@@ -37,10 +37,11 @@ public class NettyClient24 {
     private static final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     private static final HeartBeatTool heartBeatToolAnnotation = GlobalConfiguration.class.getAnnotation(HeartBeatTool.class);
     // static NettyClientHandler24 clientHandler;//跟他没关系 因为每次都新建一个
-    private static  ThreadLocal<NettyClientHandler24> nettyClientHandlerThreadLocal;
+    private static ThreadLocal<NettyClientHandler24> nettyClientHandlerThreadLocal;
 
     public static Object callMethod(String hostName, int port, Object param, Method method, ParameterSettings parameterSettings) {
-        if (nettyClientHandlerThreadLocal==null) nettyClientHandlerThreadLocal = ThreadLocal.withInitial(() -> new NettyClientHandler24(parameterSettings));
+        if (nettyClientHandlerThreadLocal == null)
+            nettyClientHandlerThreadLocal = ThreadLocal.withInitial(() -> new NettyClientHandler24(parameterSettings));
 
 
         NettyClientHandler24 clientHandler = nettyClientHandlerThreadLocal.get();

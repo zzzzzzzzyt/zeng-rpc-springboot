@@ -1,7 +1,5 @@
 package com.rpc.zeng.consumer.netty_client_handler;
 
-import com.rpc.zeng.common.annotation.RpcSerializationSelector;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.serialization.hessian.HessianUtils;
 import com.rpc.zeng.common.serialization.kryo.KryoUtils;
 import com.rpc.zeng.common.serialization.protostuff.ProtostuffUtils;

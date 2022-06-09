@@ -1,21 +1,16 @@
 package com.rpc.zeng.consumer.service_discovery;
 
-import com.rpc.zeng.common.annotation.LoadBalanceMethodImpl;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.loadbalance.AccessLoadBalance;
 import com.rpc.zeng.common.loadbalance.ConsistentLoadBalance;
 import com.rpc.zeng.common.loadbalance.LoadBalance;
 import com.rpc.zeng.common.loadbalance.RandomLoadBalance;
-import com.rpc.zeng.consumer.nio.NIONonBlockingClient12;
 import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_SESSION_TIMEOUT;
@@ -60,8 +55,8 @@ public class ZkServiceDiscovery {
                 default:
                     nowLoadBalance = new AccessLoadBalance();
             }
-            return nowLoadBalance.loadBalance(zooKeeper,prePath);
-        } catch (KeeperException | InterruptedException | RpcException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            return nowLoadBalance.loadBalance(zooKeeper, prePath);
+        } catch (KeeperException | InterruptedException | RpcException e) {
             log.error(e.getMessage(), e);
             return null;
         }

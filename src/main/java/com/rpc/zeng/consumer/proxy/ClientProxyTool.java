@@ -13,7 +13,7 @@ public class ClientProxyTool implements ClientProxy {
     private ClientProxy clientProxy;
 
     public ClientProxyTool(ParameterSettings parameterSettings) {
-        switch (parameterSettings.getClientProxy()){
+        switch (parameterSettings.getClientProxy()) {
             case "RpcNettyClientCGLIBProxy":
                 clientProxy = new RpcNettyClientCGLIBProxy();
                 break;
@@ -25,6 +25,6 @@ public class ClientProxyTool implements ClientProxy {
 
     @Override
     public Object getBean(Class<?> serviceClass, ParameterSettings parameterSettings) {
-        return clientProxy.getBean(serviceClass,parameterSettings);
+        return clientProxy.getBean(serviceClass, parameterSettings);
     }
 }
