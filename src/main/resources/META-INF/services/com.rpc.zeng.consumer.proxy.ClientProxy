@@ -1,4 +1,0 @@
-#根据需要进行注解 一定要选择和你启用的大版本相同的代理类 netty的不能起nio的
-#com.rpc.zeng.consumer.proxy.netty.RpcNettyClientCGLIBProxy
-com.rpc.zeng.consumer.proxy.netty.RpcNettyClientJDKProxy
-#com.rpc.zeng.consumer.proxy.nio.RpcNioClientProxy

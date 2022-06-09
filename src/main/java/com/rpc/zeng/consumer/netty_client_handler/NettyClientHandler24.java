@@ -30,7 +30,6 @@ public class NettyClientHandler24 extends ChannelInboundHandlerAdapter implement
     private Method method;
     private Object response;
     private ChannelHandlerContext context;
-    private ParameterSettings parameterSettings;
 
     //序列化工具
     private SerializationTool serializationTool;
@@ -42,7 +41,6 @@ public class NettyClientHandler24 extends ChannelInboundHandlerAdapter implement
     private CompressTypeTool compressTool;
 
     public NettyClientHandler24(ParameterSettings parameterSettings) {
-        this.parameterSettings = parameterSettings;
         serializationTool = new SerializationTool(parameterSettings);
         compressTool = new CompressTypeTool(parameterSettings);
     }

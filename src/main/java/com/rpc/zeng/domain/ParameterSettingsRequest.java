@@ -13,4 +13,5 @@ public class ParameterSettingsRequest {
     private String compressTool;
     private String registryName;
     private String rpcSerialization;
+    private String clientProxy;
 }

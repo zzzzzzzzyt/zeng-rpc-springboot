@@ -15,7 +15,7 @@ import com.rpc.zeng.domain.ParameterSettings;
  */
 public class NettyConsumerBootStrap21 {
     public static Customer main(ParameterSettings parameterSettings) {
-        ClientProxyTool proxy = new ClientProxyTool();
+        ClientProxyTool proxy = new ClientProxyTool(parameterSettings);
         return (Customer) proxy.getBean(Customer.class,parameterSettings);
     }
 }

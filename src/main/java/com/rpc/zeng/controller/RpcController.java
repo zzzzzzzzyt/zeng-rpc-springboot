@@ -25,6 +25,7 @@ public class RpcController {
         parameterSettings.setCompressTool("DeflaterUtils");
         parameterSettings.setRegistryName("zookeeper");
         parameterSettings.setRpcSerialization("fastjson");
+        parameterSettings.setClientProxy("RpcNettyClientCGLIBProxy");
     }
 
 

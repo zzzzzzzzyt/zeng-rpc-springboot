@@ -18,19 +18,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ChosenServerCall {
     public static void start(ParameterSettings parameterSettings) {
-        switch (parameterSettings.getRpcTool()) {
-            case "Netty":
-                NettyServerCall.main(parameterSettings);
-                break;
-            case "Nio":
-                NIOServerCall.main(null);
-                break;
-            default:
-                try {
-                    throw new RpcException("暂时还没有该方法，博主正在努力跟进中"); //抛出异常后进行捕获
-                } catch (RpcException e) {
-                    log.error(e.getMessage(), e);
-                }
+        if ("Netty".equals(parameterSettings.getRpcTool())) {
+            NettyServerCall.main(parameterSettings);
+        } else {
+            try {
+                throw new RpcException("暂时还没有该方法，博主正在努力跟进中"); //抛出异常后进行捕获
+            } catch (RpcException e) {
+                log.error(e.getMessage(), e);
+            }
         }
     }
 }
