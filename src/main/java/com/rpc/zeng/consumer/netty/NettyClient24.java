@@ -5,6 +5,7 @@ import com.rpc.zeng.common.annotation.HeartBeatTool;
 import com.rpc.zeng.common.codec.AddCodec;
 import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.consumer.netty_client_handler.NettyClientHandler24;
+import com.rpc.zeng.domain.ParameterSettings;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -36,9 +37,11 @@ public class NettyClient24 {
     private static final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     private static final HeartBeatTool heartBeatToolAnnotation = GlobalConfiguration.class.getAnnotation(HeartBeatTool.class);
     // static NettyClientHandler24 clientHandler;//跟他没关系 因为每次都新建一个
-    private static final ThreadLocal<NettyClientHandler24> nettyClientHandlerThreadLocal = ThreadLocal.withInitial(() -> new NettyClientHandler24());
+    private static  ThreadLocal<NettyClientHandler24> nettyClientHandlerThreadLocal;
 
-    public static Object callMethod(String hostName, int port, Object param, Method method) {
+    public static Object callMethod(String hostName, int port, Object param, Method method, ParameterSettings parameterSettings) {
+        if (nettyClientHandlerThreadLocal==null) nettyClientHandlerThreadLocal = ThreadLocal.withInitial(() -> new NettyClientHandler24(parameterSettings));
+
 
         NettyClientHandler24 clientHandler = nettyClientHandlerThreadLocal.get();
         //建立客户端监听
@@ -54,7 +57,7 @@ public class NettyClient24 {
                             ChannelPipeline pipeline = socketChannel.pipeline();
 
                             //加编解码器的逻辑，根据对应的注解进行编码器的添加 这里面有实现对应的逻辑 //
-                            AddCodec.addCodec(pipeline, method, true);
+                            AddCodec.addCodec(pipeline, method, true, parameterSettings);
 
                             /*
                                 v2.5更新添加读写空闲处理器

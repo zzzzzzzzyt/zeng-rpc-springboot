@@ -14,6 +14,6 @@ import com.rpc.zeng.consumer.proxy.ClientProxyTool;
 public class NIOConsumerBootStrap15 {
     public static Customer main(String[] args) {
         ClientProxyTool proxy = new ClientProxyTool();
-        return (Customer) proxy.getBean(Customer.class);
+        return (Customer) proxy.getBean(Customer.class,null);
     }
 }

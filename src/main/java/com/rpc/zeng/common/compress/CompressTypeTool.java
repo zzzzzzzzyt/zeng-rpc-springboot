@@ -12,6 +12,7 @@ import com.rpc.zeng.common.compress.lz4.Lz4Utils;
 import com.rpc.zeng.common.compress.zip.ZipUtils;
 import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.exception.RpcException;
+import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -36,9 +37,8 @@ public class CompressTypeTool implements CompressType {
 
 
     //通过注解获取对应的工具
-    static {
-        String compressTool = GlobalConfiguration.class.getAnnotation(CompressSelector.class).CompressTool();
-        switch (compressTool) {
+    public CompressTypeTool(ParameterSettings parameterSettings){
+        switch (parameterSettings.getCompressTool()) {
             case "BZipUtils":
                 compressUtils = new BZipUtils();
                 break;

@@ -6,6 +6,7 @@ import com.rpc.zeng.common.compress.CompressTypeTool;
 import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.constants.MethodPath;
 import com.rpc.zeng.common.serialization.SerializationTool;
+import com.rpc.zeng.domain.ParameterSettings;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -25,20 +26,22 @@ import java.lang.reflect.Method;
 @Slf4j
 public class NettyServerHandler24 extends ChannelInboundHandlerAdapter {
     private final String methodName;
+    private CompressTypeTool compressTool;
+    private SerializationTool serializationTool;
 
     //要传入对应的方法名 否则不知道 netty服务器能执行什么方法
-    public NettyServerHandler24(String methodName) {
+    public NettyServerHandler24(String methodName, ParameterSettings parameterSettings) {
         this.methodName = methodName;
+        this.compressTool= new CompressTypeTool(parameterSettings);
+        this.serializationTool = new SerializationTool(parameterSettings);
     }
 
     //静态实现序列化工具类
-    static SerializationTool serializationTool = new SerializationTool();
-
     //获得是否进行解压缩
     static boolean openFunction = GlobalConfiguration.class.getAnnotation(CompressFunction.class).isOpenFunction();
 
     //解压缩工具
-    static CompressTypeTool compressTool = new CompressTypeTool();
+
 
     //实现对应的方法
 

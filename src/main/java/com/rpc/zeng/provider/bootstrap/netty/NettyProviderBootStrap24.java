@@ -3,6 +3,7 @@ package com.rpc.zeng.provider.bootstrap.netty;
 
 import com.rpc.zeng.common.monitor.RpcMonitor;
 import com.rpc.zeng.common.monitor.RpcMonitorOperator;
+import com.rpc.zeng.domain.ParameterSettings;
 import com.rpc.zeng.provider.netty.NettyServer24;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +23,7 @@ public class NettyProviderBootStrap24 {
     static volatile AtomicInteger port = new AtomicInteger(6666); //对应的端口 要传过去 注册到注册中心去
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args, ParameterSettings parameterSettings) {
         //首先对原先数据库中的数据进行清空  因为这是重新启动 服务提供端口 所以需要重新计算
         RpcMonitorOperator rpcMonitorOperator = new RpcMonitorOperator();
         rpcMonitorOperator.deleteAll();
@@ -43,7 +44,7 @@ public class NettyProviderBootStrap24 {
                 rpcMonitorOperator.addServer(rpcMonitor);
                 int nowPort = port.get();
                 //因为下面这个开启一个线程 会慢一点
-                new Thread(() -> NettyServer24.start(methodName, nowPort)).start();
+                new Thread(() -> NettyServer24.start(methodName, nowPort,parameterSettings)).start();
                 port.incrementAndGet();
             }
         }

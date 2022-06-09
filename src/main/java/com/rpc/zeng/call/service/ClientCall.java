@@ -5,6 +5,7 @@ import com.rpc.zeng.common.annotation.RpcClientBootStrap;
 import com.rpc.zeng.common.annotation.RpcToolsSelector;
 import com.rpc.zeng.common.entity.Person;
 import com.rpc.zeng.common.method.Customer;
+import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -18,9 +19,9 @@ import lombok.extern.slf4j.Slf4j;
 @RpcClientBootStrap(version = "2.4")
 @RpcToolsSelector(rpcTool = "Netty")
 public class ClientCall {
-    public static void main(String[] args) {
+    public static void main(ParameterSettings parameterSettings) {
         //实现调用
-        Customer customer = ChosenClientCall.start();
+        Customer customer = ChosenClientCall.start(parameterSettings);
         assert customer != null;
 
         // long start = System.currentTimeMillis();
@@ -32,7 +33,7 @@ public class ClientCall {
         log.info(msg1);
         //
         new Thread(() -> {
-            Customer customer1 = ChosenClientCall.start();
+            Customer customer1 = ChosenClientCall.start(parameterSettings);
             Person person2 = customer1.GetPerson(new Person("zz"));
             String msg2 = "获取对应类" + person2.getClass() + "，名字为" + person2.getName();
             log.info(msg2);

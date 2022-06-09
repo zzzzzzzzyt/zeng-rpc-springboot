@@ -1,6 +1,8 @@
 package com.rpc.zeng.consumer.proxy;
 
 
+import com.rpc.zeng.domain.ParameterSettings;
+
 import java.util.Objects;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Objects;
  */
 public class ClientProxyTool implements ClientProxy {
     @Override
-    public Object getBean(Class<?> serviceClass) {
-        return Objects.requireNonNull(SPIClientProxyUtils.getUtils()).getBean(serviceClass);
+    public Object getBean(Class<?> serviceClass, ParameterSettings parameterSettings) {
+        return Objects.requireNonNull(SPIClientProxyUtils.getUtils()).getBean(serviceClass,parameterSettings);
     }
 }

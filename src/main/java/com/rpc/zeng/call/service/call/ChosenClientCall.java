@@ -7,6 +7,7 @@ import com.rpc.zeng.call.service.call.nio_call.NIOClientCall;
 import com.rpc.zeng.common.annotation.RpcToolsSelector;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.method.Customer;
+import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -17,12 +18,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class ChosenClientCall {
-    public static Customer start() {
-        RpcToolsSelector annotation = ClientCall.class.getAnnotation(RpcToolsSelector.class);
-        switch (annotation.rpcTool()) {
+    public static Customer start(ParameterSettings parameterSettings) {
+        switch (parameterSettings.getRpcTool()) {
             //暂时还没有 return的对象
             case "Netty":
-                return NettyClientCall.main(null);
+                return NettyClientCall.main(parameterSettings);
             case "Nio":
                 return NIOClientCall.main(null);
             default:

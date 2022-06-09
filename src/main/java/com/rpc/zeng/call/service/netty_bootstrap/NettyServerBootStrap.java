@@ -3,8 +3,8 @@ package com.rpc.zeng.call.service.netty_bootstrap;
 import com.rpc.zeng.api.init.ZK;
 import com.rpc.zeng.call.service.ServerCall;
 import com.rpc.zeng.common.annotation.RpcMethodCluster;
-import com.rpc.zeng.common.annotation.RpcServerBootStrap;
 import com.rpc.zeng.common.exception.RpcException;
+import com.rpc.zeng.domain.ParameterSettings;
 import com.rpc.zeng.provider.bootstrap.netty.NettyProviderBootStrap20;
 import com.rpc.zeng.provider.bootstrap.netty.NettyProviderBootStrap21;
 import com.rpc.zeng.provider.bootstrap.netty.NettyProviderBootStrap22;
@@ -16,12 +16,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class NettyServerBootStrap {
-    public static void start() {
+    public static void start(ParameterSettings parameterSettings) {
         //先对ZK进行初始化
         ZK.init();
-        RpcServerBootStrap annotation = ServerCall.class.getAnnotation(RpcServerBootStrap.class);
         //当前服务端启动器 class对象
-        String currentServerBootStrapVersion = annotation.version();
+        String currentServerBootStrapVersion = parameterSettings.getVersion();
 
         //获取对应的方法和个数 然后进行启动
         //1.获取对应方法 在获取对应的注解  注解中的属性
@@ -57,10 +56,10 @@ public class NettyServerBootStrap {
                 NettyProviderBootStrap20.main(new String[]{"127.0.0.1", String.valueOf(6668)});
                 break;
             case "2.1":
-                NettyProviderBootStrap21.main(new String[]{methodBuilder.toString(), numBuilder.toString()});
+                NettyProviderBootStrap21.main(new String[]{methodBuilder.toString(), numBuilder.toString()},parameterSettings);
                 break;
             case "2.2": //沿用 就是 做个区分  这个版本时进行序列化的测试
-                NettyProviderBootStrap22.main(new String[]{methodBuilder.toString(), numBuilder.toString()});
+                NettyProviderBootStrap22.main(new String[]{methodBuilder.toString(), numBuilder.toString()},parameterSettings);
                 break;
             case "2.4": //这个版本是个大版本 各种序列化工具出现和使用
             case "2.5":
@@ -70,7 +69,7 @@ public class NettyServerBootStrap {
             case "2.9":
             case "2.10":
             case "2.11":
-                NettyProviderBootStrap24.main(new String[]{methodBuilder.toString(), numBuilder.toString()});
+                NettyProviderBootStrap24.main(new String[]{methodBuilder.toString(), numBuilder.toString()},parameterSettings);
                 break;
             default:
                 try {

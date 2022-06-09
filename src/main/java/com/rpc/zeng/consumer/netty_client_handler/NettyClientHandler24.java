@@ -5,6 +5,7 @@ import com.rpc.zeng.common.annotation.CompressFunction;
 import com.rpc.zeng.common.compress.CompressTypeTool;
 import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.serialization.SerializationTool;
+import com.rpc.zeng.domain.ParameterSettings;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.IdleStateEvent;
@@ -29,15 +30,22 @@ public class NettyClientHandler24 extends ChannelInboundHandlerAdapter implement
     private Method method;
     private Object response;
     private ChannelHandlerContext context;
+    private ParameterSettings parameterSettings;
 
     //序列化工具
-    static SerializationTool serializationTool = new SerializationTool();
+    private SerializationTool serializationTool;
 
     //判断是否进行解压缩
     static boolean openFunction = GlobalConfiguration.class.getAnnotation(CompressFunction.class).isOpenFunction();
 
     //解压缩工具
-    static CompressTypeTool compressTool = new CompressTypeTool();
+    private CompressTypeTool compressTool;
+
+    public NettyClientHandler24(ParameterSettings parameterSettings) {
+        this.parameterSettings = parameterSettings;
+        serializationTool = new SerializationTool(parameterSettings);
+        compressTool = new CompressTypeTool(parameterSettings);
+    }
 
     public void setParam(Object param) {
         this.param = param;

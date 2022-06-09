@@ -1,6 +1,7 @@
 package com.rpc.zeng.provider.netty;
 
 
+import com.rpc.zeng.domain.ParameterSettings;
 import com.rpc.zeng.provider.netty_server_handler.NettyServerHandler21;
 import com.rpc.zeng.provider.utils.MethodRegister;
 import io.netty.bootstrap.ServerBootstrap;
@@ -19,14 +20,14 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class NettyServer21 {
-    public static void start(String methodName, int port) {
+    public static void start(String methodName, int port, ParameterSettings parameterSettings) {
         //真正的实现逻辑 被封装到下面的方法当中了
-        start0(methodName, port);
+        start0(methodName, port,parameterSettings);
     }
 
-    private static void start0(String methodName, int port) {
+    private static void start0(String methodName, int port, ParameterSettings parameterSettings) {
         //先将地址进行注册
-        MethodRegister.register(methodName, "127.0.0.1", port);
+        MethodRegister.register(methodName, "127.0.0.1", port, parameterSettings);
 
         //开始创建相应的netty服务端
         ServerBootstrap serverBootstrap = new ServerBootstrap();

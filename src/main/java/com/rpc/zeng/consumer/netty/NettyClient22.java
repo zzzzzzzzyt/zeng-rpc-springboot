@@ -3,6 +3,7 @@ package com.rpc.zeng.consumer.netty;
 
 import com.rpc.zeng.common.codec.AddCodec;
 import com.rpc.zeng.consumer.netty_client_handler.NettyClientHandler22;
+import com.rpc.zeng.domain.ParameterSettings;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -31,7 +32,7 @@ public class NettyClient22 {
 
     static NettyClientHandler22 clientHandler;
 
-    public static void initClient(String hostName, int port, Method method) {
+    public static void initClient(String hostName, int port, Method method, ParameterSettings parameterSettings) {
 
         clientHandler = new NettyClientHandler22();
         //建立客户端监听
@@ -47,7 +48,7 @@ public class NettyClient22 {
                             ChannelPipeline pipeline = socketChannel.pipeline();
 
                             //加编解码器的逻辑，根据对应的注解进行编码器的添加 这里面有实现对应的逻辑 //
-                            AddCodec.addCodec(pipeline, method, true);
+                            AddCodec.addCodec(pipeline, method, true, parameterSettings);
                             pipeline.addLast(clientHandler);
                         }
                     });
@@ -60,10 +61,10 @@ public class NettyClient22 {
         }
     }
 
-    public static Object callMethod(String hostName, int port, Object param, Method method) {
+    public static Object callMethod(String hostName, int port, Object param, Method method ,ParameterSettings parameterSettings) {
 
         //我是有多个地方进行调用的 不能只连接一个
-        initClient(hostName, port, method);
+        initClient(hostName, port, method,parameterSettings);
         clientHandler.setParam(param);
         //接下来这就有关系到调用 直接调用
         try {

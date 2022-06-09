@@ -3,6 +3,7 @@ package com.rpc.zeng.consumer.bootstrap.netty;
 
 import com.rpc.zeng.common.method.Customer;
 import com.rpc.zeng.consumer.proxy.ClientProxyTool;
+import com.rpc.zeng.domain.ParameterSettings;
 
 /*
     以netty为网络编程框架的消费者端启动类
@@ -13,8 +14,8 @@ import com.rpc.zeng.consumer.proxy.ClientProxyTool;
  * @author 祝英台炸油条
  */
 public class NettyConsumerBootStrap22 {
-    public static Customer main() {
+    public static Customer main(ParameterSettings parameterSettings) {
         ClientProxyTool proxy = new ClientProxyTool();
-        return (Customer) proxy.getBean(Customer.class);
+        return (Customer) proxy.getBean(Customer.class,parameterSettings);
     }
 }

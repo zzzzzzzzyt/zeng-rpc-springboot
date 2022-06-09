@@ -1,6 +1,7 @@
 package com.rpc.zeng.provider.bootstrap.netty;
 
 
+import com.rpc.zeng.domain.ParameterSettings;
 import com.rpc.zeng.provider.netty.NettyServer21;
 
 
@@ -15,7 +16,7 @@ import com.rpc.zeng.provider.netty.NettyServer21;
 public class NettyProviderBootStrap21 {
     static volatile int port = 6666; //对应的端口 要传过去 注册到注册中心去
 
-    public static void main(String[] args) {
+    public static void main(String[] args, ParameterSettings parameterSettings) {
         //直接在这里将对应的方法什么的进行分开 然后传过去
         String methods = args[0];
         String nums = args[1];
@@ -25,7 +26,7 @@ public class NettyProviderBootStrap21 {
         for (int i = 0; i < methodArray.length; i++) {
             String methodName = methodArray[i];
             for (int methodNum = 0; methodNum < Integer.parseInt(methodNumArray[i]); methodNum++) {
-                new Thread(() -> NettyServer21.start(methodName, port++)).start();
+                new Thread(() -> NettyServer21.start(methodName, port++,parameterSettings)).start();
             }
         }
     }

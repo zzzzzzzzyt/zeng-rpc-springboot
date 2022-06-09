@@ -47,7 +47,7 @@ public class NIONonBlockingServer15 {
             serverSocketChannel.bind(new InetSocketAddress(port));
 
             //将服务注册进注册中心中  根据注解进行注册  去找哪个对应的注册中心的实际逻辑封装在方法中
-            MethodRegister.register(method, "127.0.0.1", port);
+            MethodRegister.register(method, "127.0.0.1", port, null);
 
 
             //这里注意 要设置非阻塞   阻塞的话  他会一直等待事件或者是异常抛出的时候才会继续 会浪费cpu

@@ -3,6 +3,7 @@ package com.rpc.zeng.provider.netty;
 
 import com.rpc.zeng.common.codec.AddCodec;
 import com.rpc.zeng.common.constants.MethodPath;
+import com.rpc.zeng.domain.ParameterSettings;
 import com.rpc.zeng.provider.netty_server_handler.NettyServerHandler24;
 import com.rpc.zeng.provider.utils.MethodRegister;
 import io.netty.bootstrap.ServerBootstrap;
@@ -21,14 +22,14 @@ import java.lang.reflect.Method;
  */
 @Slf4j
 public class NettyServer24 {
-    public static void start(String methodName, int port) {
+    public static void start(String methodName, int port, ParameterSettings parameterSettings) {
         //真正的实现逻辑 被封装到下面的方法当中了
-        start0(methodName, port);
+        start0(methodName, port,parameterSettings);
     }
 
-    private static void start0(String methodName, int port) {
+    private static void start0(String methodName, int port, ParameterSettings parameterSettings) {
         //先将地址进行注册
-        MethodRegister.register(methodName, "127.0.0.1", port);
+        MethodRegister.register(methodName, "127.0.0.1", port,parameterSettings);
 
         //开始创建相应的netty服务端
         ServerBootstrap serverBootstrap = new ServerBootstrap();
@@ -56,10 +57,10 @@ public class NettyServer24 {
                                 log.error(e.getMessage(), e);
                             }
                             assert method != null;
-                            AddCodec.addCodec(pipeline, method, false);
+                            AddCodec.addCodec(pipeline, method, false,parameterSettings);
 
                             //传入的直接是方法本身了 而不是方法名字
-                            pipeline.addLast(new NettyServerHandler24(methodName));
+                            pipeline.addLast(new NettyServerHandler24(methodName,parameterSettings));
                         }
                     });
 

@@ -10,6 +10,7 @@ import com.rpc.zeng.common.serialization.json.GsonUtils;
 import com.rpc.zeng.common.serialization.json.JacksonUtils;
 import com.rpc.zeng.common.serialization.kryo.KryoUtils;
 import com.rpc.zeng.common.serialization.protostuff.ProtostuffUtils;
+import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 
 //这是一个进行统一序列化的一个工具
@@ -20,7 +21,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SerializationTool implements Serializer {
 
-    static String serialization = GlobalConfiguration.class.getAnnotation(RpcSerializationSelector.class).RpcSerialization();
+    private String serialization;
+
+    public SerializationTool(ParameterSettings parameterSettings) {
+        serialization = parameterSettings.getRpcSerialization();
+    }
 
     @Override
     public byte[] serialize(Object obj) {

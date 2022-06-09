@@ -4,6 +4,7 @@ import com.rpc.zeng.common.annotation.RpcSerializationSelector;
 import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.entity.PersonPOJO;
 import com.rpc.zeng.common.exception.RpcException;
+import com.rpc.zeng.domain.ParameterSettings;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.bytes.ByteArrayDecoder;
 import io.netty.handler.codec.bytes.ByteArrayEncoder;
@@ -27,24 +28,21 @@ import java.lang.reflect.Method;
 public class AddCodec {
 
 
-    public static void addCodec(ChannelPipeline pipeline, Method method, boolean isConsumer) {
-        //根据注解进行编解码器的选择
-        RpcSerializationSelector annotation = GlobalConfiguration.class.getAnnotation(RpcSerializationSelector.class);
+    public static void addCodec(ChannelPipeline pipeline, Method method, boolean isConsumer, ParameterSettings parameterSettings) {
 
         //目前而来我的传输 传入的参数都是一个 所以根据这一个传入和返回的参数的类型进行判断
         //下面是我传入的参数 和传出的参数
         Class<?> returnType = method.getReturnType();
         Class<?> parameterType = method.getParameterTypes()[0];
 
-        String rpcSerialization = annotation.RpcSerialization();
-        switch (rpcSerialization) {
+        switch (parameterSettings.getRpcSerialization()) {
             case "ObjectCodec": //2.2版本之前会使用
                 if (returnType != String.class && parameterType != String.class) {
                     pipeline.addLast(new ObjectEncoder());
                     //传的参是固定写法
                     pipeline.addLast(new ObjectDecoder(Integer.MAX_VALUE,
                             ClassResolvers.weakCachingResolver(null)));
-                } else if (returnType != String.class && parameterType == String.class) {
+                } else if (returnType != String.class) {
                     //如果是客户端的话那么传出的是服务端传入的  所以这边编码那边就是解码
                     if (isConsumer) {
                         //根据传入传出进行对应的编码

@@ -9,6 +9,7 @@ import com.rpc.zeng.consumer.proxy.ClientProxy;
 import com.rpc.zeng.consumer.service_discovery.NacosServiceDiscovery;
 import com.rpc.zeng.consumer.service_discovery.ZkCuratorDiscovery;
 import com.rpc.zeng.consumer.service_discovery.ZkServiceDiscovery;
+import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -24,8 +25,11 @@ import java.lang.reflect.Method;
 @Slf4j
 public class RpcNettyClientCGLIBProxy implements ClientProxy, MethodInterceptor {
 
+    private ParameterSettings parameterSettings;
+
     @Override
-    public Object getBean(Class serviceClass) {
+    public Object getBean(Class serviceClass, ParameterSettings parameterSettings) {
+        this.parameterSettings = parameterSettings;
         //设置动态代理增强类
         Enhancer enhancer = new Enhancer();
         //设置类加载器
@@ -48,7 +52,7 @@ public class RpcNettyClientCGLIBProxy implements ClientProxy, MethodInterceptor 
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy) {
         String methodAddress = null;
         try {
-            methodAddress = getMethodAddress(method.getName());
+            methodAddress = getMethodAddress(method.getName(),parameterSettings);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
@@ -59,7 +63,7 @@ public class RpcNettyClientCGLIBProxy implements ClientProxy, MethodInterceptor 
         rpcMonitorOperator.updateServer(methodAddress);
 
         String[] split = methodAddress.split(":");
-        return NettyClient.callMethod(split[0], Integer.parseInt(split[1]), args[0], method);
+        return NettyClient.callMethod(split[0], Integer.parseInt(split[1]), args[0], method, parameterSettings);
     }
 
 
@@ -67,12 +71,10 @@ public class RpcNettyClientCGLIBProxy implements ClientProxy, MethodInterceptor 
      * 实际去获得对应的服务 并完成方法调用的方法
      *
      * @param methodName 根据方法名  根据添加的注册中心注解来选择相应的注册中心进行  实现负载均衡获取一个方法对应地址
+     * @param parameterSettings
      */
-    private static String getMethodAddress(String methodName) {
-        //根据注解进行方法调用
-        //根据在代理类上的注解调用  看清楚底下的因为是个class数组 可以直接继续获取 注解
-        RegistryChosen annotation = GlobalConfiguration.class.getAnnotation(RegistryChosen.class);
-        switch (annotation.registryName()) {
+    private static String getMethodAddress(String methodName, ParameterSettings parameterSettings) {
+        switch (parameterSettings.getRegistryName()) {
             case "nacos":
                 return NacosServiceDiscovery.getMethodAddress(methodName);
             case "zookeeper":

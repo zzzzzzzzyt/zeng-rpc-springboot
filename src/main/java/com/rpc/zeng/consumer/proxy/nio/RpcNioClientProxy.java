@@ -7,6 +7,7 @@ import com.rpc.zeng.consumer.proxy.ClientProxy;
 import com.rpc.zeng.consumer.service_discovery.NacosServiceDiscovery;
 import com.rpc.zeng.consumer.service_discovery.ZkCuratorDiscovery;
 import com.rpc.zeng.consumer.service_discovery.ZkServiceDiscovery;
+import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Proxy;
@@ -21,7 +22,7 @@ public class RpcNioClientProxy implements ClientProxy {
     static Object rpcClientProxy;
 
     //获取代理对象 并返回 当前类别
-    public Object getBean(final Class<?> serviceClass) {
+    public Object getBean(final Class<?> serviceClass, ParameterSettings parameterSettings) {
         /*
             参数详解
             1、用哪个类加载器去加载对象

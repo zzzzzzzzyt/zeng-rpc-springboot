@@ -1,8 +1,7 @@
 package com.rpc.zeng.provider.utils;
 
-import com.rpc.zeng.common.annotation.RegistryChosen;
-import com.rpc.zeng.common.configuration.GlobalConfiguration;
 import com.rpc.zeng.common.exception.RpcException;
+import com.rpc.zeng.domain.ParameterSettings;
 import com.rpc.zeng.provider.service_registry.NacosServiceRegistry;
 import com.rpc.zeng.provider.service_registry.ZkCuratorRegistry;
 import com.rpc.zeng.provider.service_registry.ZkServiceRegistry;
@@ -19,15 +18,15 @@ public class MethodRegister {
     /**
      * 实际进行注册的方法
      *
-     * @param method 方法名字
-     * @param ip     对应的ip
-     * @param port   对应的port
+     * @param method            方法名字
+     * @param ip                对应的ip
+     * @param port              对应的port
+     * @param parameterSettings 参数
      */
-    public static void register(String method, String ip, int port) {
+    public static void register(String method, String ip, int port, ParameterSettings parameterSettings) {
 
-        RegistryChosen annotation = GlobalConfiguration.class.getAnnotation(RegistryChosen.class);
 
-        switch (annotation.registryName()) {
+        switch (parameterSettings.getRegistryName()) {
             case "nacos":
                 NacosServiceRegistry.registerMethod(method, ip, port);
                 break;
