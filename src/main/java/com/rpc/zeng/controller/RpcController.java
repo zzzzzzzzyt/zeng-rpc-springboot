@@ -23,7 +23,7 @@ public class RpcController {
         parameterSettings.setVersion("2.4");
         parameterSettings.setRpcTool("Netty");
         parameterSettings.setCompressTool("DeflaterUtils");
-        parameterSettings.setRegistryName("zookeeper");
+        parameterSettings.setRegistryName("nacos");
         parameterSettings.setRpcSerialization("fastjson");
         parameterSettings.setClientProxy("RpcNettyClientCGLIBProxy");
         parameterSettings.setIsCompress("1");
