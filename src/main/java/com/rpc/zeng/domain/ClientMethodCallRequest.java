@@ -2,6 +2,8 @@ package com.rpc.zeng.domain;
 
 import lombok.Data;
 
+import java.util.Map;
+
 /**
  * @Author 祝英台炸油条
  * @Time : 2022/6/15 16:28
@@ -9,5 +11,5 @@ import lombok.Data;
  **/
 @Data
 public class ClientMethodCallRequest {
-    String methodName;
+    private Map<String,String> method;
 }
