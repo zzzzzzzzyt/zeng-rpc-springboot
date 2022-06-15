@@ -2,8 +2,10 @@ package com.rpc.zeng.controller;
 
 import com.rpc.zeng.call.service.ClientCall;
 import com.rpc.zeng.call.service.ServerCall;
+import com.rpc.zeng.domain.ClientMethodCallRequest;
 import com.rpc.zeng.domain.ParameterSettings;
 import com.rpc.zeng.domain.ParameterSettingsRequest;
+import com.rpc.zeng.domain.ServerMethodRegistryRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -68,7 +70,7 @@ public class RpcController {
      * 服务提供方controller调用    将对应的参数传入   还要带入 要生成什么  也是个request
      */
     @GetMapping("/provider")
-    public void providerNetty() {
+    public void providerNetty(@RequestBody ServerMethodRegistryRequest serverMethodRegistryRequest) {
         ServerCall.main(parameterSettings);
     }
 
@@ -77,8 +79,7 @@ public class RpcController {
      * 消费者controller调用    将对应的参数传入   要调用什么
      */
     @GetMapping("/consumer")
-    public void consumerNetty() {
+    public void consumerNetty(@RequestBody ClientMethodCallRequest clientMethodCallRequest) {
         ClientCall.main(parameterSettings);
     }
-
 }
