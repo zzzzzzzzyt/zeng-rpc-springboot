@@ -24,7 +24,7 @@ public class ClientCall {
         assert customer != null;
         Map<String, String> methodMap = clientMethodCall.getMethod();
         for (String methodName : methodMap.keySet()) {
-            switch (methodName){
+            switch (methodName) {
                 case "Hello":
                     log.info(customer.Hello(methodMap.get(methodName)));
                     break;
@@ -42,6 +42,5 @@ public class ClientCall {
                     log.info("没有你申请的方法不好意思,请重新输入");
             }
         }
-
     }
 }
