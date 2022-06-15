@@ -20,14 +20,7 @@ public class ClientCall {
         Customer customer = ChosenClientCall.start(parameterSettings);
         assert customer != null;
 
-        // long start = System.currentTimeMillis();
-        // log.info(customer.GetName(new Person("祝英台")));
-        //
-        //测试 2.0版本之后
-        Person person1 = customer.GetPerson(new Person("zz"));
-        String msg1 = "获取对应类" + person1.getClass() + "，名字为" + person1.getName();
-        log.info(msg1);
-        //
+        new Person("zyt"); //用来被获取  或者相应的
         new Thread(() -> {
             Customer customer1 = ChosenClientCall.start(parameterSettings);
             Person person2 = customer1.GetPerson(new Person("zz"));
@@ -39,21 +32,10 @@ public class ClientCall {
         log.info(customer.GetName(new Person("zzz")));
         log.info(customer.GetName(new Person("zzz")));
         log.info(customer.GetName(new Person("zzz")));
-        //2.4版本之前的测试
-        // log.info(customer.GetPerson(PersonPOJO.Person.newBuilder().setName("炸油条").build()));
-        //测试
-        // log.info(customer.GetName(PersonPOJO.Person.newBuilder().setName("炸油条").build()));
-
-
-        // nio使用测试  netty也可以使用
         log.info(customer.Hello("success"));
         log.info(customer.Bye("fail"));
         log.info(customer.Bye("fail"));
         log.info(customer.Bye("fail"));
-
-
-        // long end = System.currentTimeMillis();
-        // log.info(end-start);
 
     }
 }
