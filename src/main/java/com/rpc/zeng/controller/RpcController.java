@@ -71,11 +71,11 @@ public class RpcController {
      * 服务提供方controller调用    将对应的参数传入   还要带入 要生成什么  也是个request
      * @param serverMethodRegistryRequest  就是要注册什么方法  然后传入
      */
-    @GetMapping("/provider")
+    @PostMapping("/provider")
     public void providerNetty(@RequestBody ServerMethodRegistryRequest serverMethodRegistryRequest) {
         ServerMethodRegistry serverMethodRegistry = new ServerMethodRegistry();
-        BeanUtils.copyProperties(serverMethodRegistry,serverMethodRegistryRequest);
-        ServerCall.main(parameterSettings,serverMethodRegistryRequest);
+        BeanUtils.copyProperties(serverMethodRegistryRequest,serverMethodRegistry);
+        ServerCall.main(parameterSettings,serverMethodRegistry);
     }
 
 
@@ -83,10 +83,10 @@ public class RpcController {
      * 消费者controller调用    将对应的参数传入   要调用什么
      * @param clientMethodCallRequest 要调用什么方法  传入
      */
-    @GetMapping("/consumer")
+    @PostMapping("/consumer")
     public void consumerNetty(@RequestBody ClientMethodCallRequest clientMethodCallRequest) {
         ClientMethodCall clientMethodCall = new ClientMethodCall();
-        BeanUtils.copyProperties(clientMethodCall,clientMethodCallRequest);
+        BeanUtils.copyProperties(clientMethodCallRequest,clientMethodCall);
         ClientCall.main(parameterSettings,clientMethodCall);
     }
 }

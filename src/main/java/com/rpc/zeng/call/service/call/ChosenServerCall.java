@@ -4,7 +4,7 @@ package com.rpc.zeng.call.service.call;
 import com.rpc.zeng.call.service.call.netty_call.NettyServerCall;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.domain.ParameterSettings;
-import com.rpc.zeng.domain.ServerMethodRegistryRequest;
+import com.rpc.zeng.domain.ServerMethodRegistry;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -15,9 +15,9 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class ChosenServerCall {
-    public static void start(ParameterSettings parameterSettings, ServerMethodRegistryRequest serverMethodRegistryRequest) {
+    public static void start(ParameterSettings parameterSettings, ServerMethodRegistry serverMethodRegistry) {
         if ("Netty".equals(parameterSettings.getRpcTool())) {
-            NettyServerCall.main(parameterSettings,serverMethodRegistryRequest);
+            NettyServerCall.main(parameterSettings, serverMethodRegistry);
         } else {
             try {
                 throw new RpcException("暂时还没有该方法，博主正在努力跟进中"); //抛出异常后进行捕获

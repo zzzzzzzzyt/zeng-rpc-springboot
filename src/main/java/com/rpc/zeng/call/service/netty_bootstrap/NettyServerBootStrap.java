@@ -1,10 +1,9 @@
 package com.rpc.zeng.call.service.netty_bootstrap;
 
 import com.rpc.zeng.api.init.ZK;
-import com.rpc.zeng.call.service.ServerCall;
-import com.rpc.zeng.common.annotation.RpcMethodCluster;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.domain.ParameterSettings;
+import com.rpc.zeng.domain.ServerMethodRegistry;
 import com.rpc.zeng.domain.ServerMethodRegistryRequest;
 import com.rpc.zeng.provider.bootstrap.netty.NettyProviderBootStrap20;
 import com.rpc.zeng.provider.bootstrap.netty.NettyProviderBootStrap21;
@@ -19,7 +18,7 @@ import java.util.Map;
  */
 @Slf4j
 public class NettyServerBootStrap {
-    public static void start(ParameterSettings parameterSettings, ServerMethodRegistryRequest serverMethodRegistryRequest) {
+    public static void start(ParameterSettings parameterSettings, ServerMethodRegistry serverMethodRegistry) {
         //先对ZK进行初始化
         ZK.init();
         //当前服务端启动器 class对象
@@ -27,7 +26,7 @@ public class NettyServerBootStrap {
 
         //获取对应的方法和个数 然后进行启动
         //1.获取对应方法 在获取对应的注解  注解中的属性
-        Map<String, Integer> methodMap = serverMethodRegistryRequest.getMap();
+        Map<String, Integer> methodMap = serverMethodRegistry.getMap();
         int mapSize = methodMap.size();
         String[] methods = new String[mapSize];
         int[] startNums = new int[mapSize];
