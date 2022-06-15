@@ -2,12 +2,12 @@ package com.rpc.zeng.controller;
 
 import com.rpc.zeng.call.service.ClientCall;
 import com.rpc.zeng.call.service.ServerCall;
-import com.rpc.zeng.domain.ClientMethodCallRequest;
-import com.rpc.zeng.domain.ParameterSettings;
-import com.rpc.zeng.domain.ParameterSettingsRequest;
-import com.rpc.zeng.domain.ServerMethodRegistryRequest;
+import com.rpc.zeng.domain.*;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.beans.Beans;
 
 /**
  * @Author 祝英台炸油条
@@ -66,20 +66,27 @@ public class RpcController {
 
     }
 
+
     /**
      * 服务提供方controller调用    将对应的参数传入   还要带入 要生成什么  也是个request
+     * @param serverMethodRegistryRequest  就是要注册什么方法  然后传入
      */
     @GetMapping("/provider")
     public void providerNetty(@RequestBody ServerMethodRegistryRequest serverMethodRegistryRequest) {
-        ServerCall.main(parameterSettings);
+        ServerMethodRegistry serverMethodRegistry = new ServerMethodRegistry();
+        BeanUtils.copyProperties(serverMethodRegistry,serverMethodRegistryRequest);
+        ServerCall.main(parameterSettings,serverMethodRegistryRequest);
     }
 
 
     /**
      * 消费者controller调用    将对应的参数传入   要调用什么
+     * @param clientMethodCallRequest 要调用什么方法  传入
      */
     @GetMapping("/consumer")
     public void consumerNetty(@RequestBody ClientMethodCallRequest clientMethodCallRequest) {
-        ClientCall.main(parameterSettings);
+        ClientMethodCall clientMethodCall = new ClientMethodCall();
+        BeanUtils.copyProperties(clientMethodCall,clientMethodCallRequest);
+        ClientCall.main(parameterSettings,clientMethodCall);
     }
 }

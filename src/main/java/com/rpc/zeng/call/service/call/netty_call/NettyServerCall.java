@@ -5,12 +5,13 @@ package com.rpc.zeng.call.service.call.netty_call;
 
 import com.rpc.zeng.call.service.netty_bootstrap.NettyServerBootStrap;
 import com.rpc.zeng.domain.ParameterSettings;
+import com.rpc.zeng.domain.ServerMethodRegistryRequest;
 
 /**
  * @author 祝英台炸油条
  */
 public class NettyServerCall {
-    public static void main(ParameterSettings parameterSettings) {
-        NettyServerBootStrap.start(parameterSettings);
+    public static void main(ParameterSettings parameterSettings, ServerMethodRegistryRequest serverMethodRegistryRequest) {
+        NettyServerBootStrap.start(parameterSettings,serverMethodRegistryRequest);
     }
 }

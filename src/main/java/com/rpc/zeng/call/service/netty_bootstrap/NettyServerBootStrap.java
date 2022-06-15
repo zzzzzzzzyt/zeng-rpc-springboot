@@ -5,18 +5,21 @@ import com.rpc.zeng.call.service.ServerCall;
 import com.rpc.zeng.common.annotation.RpcMethodCluster;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.domain.ParameterSettings;
+import com.rpc.zeng.domain.ServerMethodRegistryRequest;
 import com.rpc.zeng.provider.bootstrap.netty.NettyProviderBootStrap20;
 import com.rpc.zeng.provider.bootstrap.netty.NettyProviderBootStrap21;
 import com.rpc.zeng.provider.bootstrap.netty.NettyProviderBootStrap22;
 import com.rpc.zeng.provider.bootstrap.netty.NettyProviderBootStrap24;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Map;
+
 /**
  * @author 祝英台炸油条
  */
 @Slf4j
 public class NettyServerBootStrap {
-    public static void start(ParameterSettings parameterSettings) {
+    public static void start(ParameterSettings parameterSettings, ServerMethodRegistryRequest serverMethodRegistryRequest) {
         //先对ZK进行初始化
         ZK.init();
         //当前服务端启动器 class对象
@@ -24,14 +27,20 @@ public class NettyServerBootStrap {
 
         //获取对应的方法和个数 然后进行启动
         //1.获取对应方法 在获取对应的注解  注解中的属性
-        RpcMethodCluster nowAnnotation = ServerCall.class.getAnnotation(RpcMethodCluster.class);
-        String[] methods = nowAnnotation.method();
-        int[] startNums = nowAnnotation.startNum();
+        Map<String, Integer> methodMap = serverMethodRegistryRequest.getMap();
+        int mapSize = methodMap.size();
+        String[] methods = new String[mapSize];
+        int[] startNums = new int[mapSize];
+        int index = 0;
+        for (Map.Entry<String, Integer> methodRegistryEntry : methodMap.entrySet()) {
+            methods[index] = methodRegistryEntry.getKey();
+            startNums[index] = methodRegistryEntry.getValue();
+            ++index;
+        }
 
         //如果不存在那就返回  或者 不一致 就抛出异常
         try {
             if (methods.length == 0) throw new RpcException("传入方法数为0");
-            if (methods.length != startNums.length) throw new RpcException("传入方法和启动无法一一对应");
         } catch (RpcException e) {
             log.error(e.getMessage(), e);
             return;

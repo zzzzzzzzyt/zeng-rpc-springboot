@@ -3,6 +3,7 @@ package com.rpc.zeng.call.service;
 import com.rpc.zeng.call.service.call.ChosenClientCall;
 import com.rpc.zeng.common.entity.Person;
 import com.rpc.zeng.common.method.Customer;
+import com.rpc.zeng.domain.ClientMethodCall;
 import com.rpc.zeng.domain.ParameterSettings;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class ClientCall {
-    public static void main(ParameterSettings parameterSettings) {
+    public static void main(ParameterSettings parameterSettings, ClientMethodCall clientMethodCall) {
         //实现调用
         Customer customer = ChosenClientCall.start(parameterSettings);
         assert customer != null;
