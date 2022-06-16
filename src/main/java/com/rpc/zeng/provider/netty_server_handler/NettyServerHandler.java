@@ -23,14 +23,14 @@ import java.util.Objects;
  * @author 祝英台炸油条
  */
 @Slf4j
-public class NettyServerHandler24 extends ChannelInboundHandlerAdapter {
+public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     private final String methodName;
     private CompressTypeTool compressTool;
     private SerializationTool serializationTool;
     private boolean openFunction;
 
     //要传入对应的方法名 否则不知道 netty服务器能执行什么方法
-    public NettyServerHandler24(String methodName, ParameterSettings parameterSettings) {
+    public NettyServerHandler(String methodName, ParameterSettings parameterSettings) {
         this.methodName = methodName;
         this.compressTool = new CompressTypeTool(parameterSettings);
         this.serializationTool = new SerializationTool(parameterSettings);

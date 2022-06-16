@@ -4,7 +4,7 @@ package com.rpc.zeng.provider.bootstrap;
 import com.rpc.zeng.common.monitor.RpcMonitor;
 import com.rpc.zeng.common.monitor.RpcMonitorOperator;
 import com.rpc.zeng.domain.ParameterSettings;
-import com.rpc.zeng.provider.netty.NettyServer24;
+import com.rpc.zeng.provider.netty.NettyServer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -44,7 +44,7 @@ public class NettyProviderBootStrap {
                 rpcMonitorOperator.addServer(rpcMonitor);
                 int nowPort = port.get();
                 //因为下面这个开启一个线程 会慢一点
-                new Thread(() -> NettyServer24.start(methodName, nowPort, parameterSettings)).start();
+                new Thread(() -> NettyServer.start(methodName, nowPort, parameterSettings)).start();
                 port.incrementAndGet();
             }
         }
