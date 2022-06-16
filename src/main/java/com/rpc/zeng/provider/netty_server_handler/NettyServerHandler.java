@@ -62,15 +62,6 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         //如果传入的不是数组 就去进行反序列化
         msg = serializationTool.deserialize(msgByteArray, method.getParameterTypes()[0]);
 
-        //因为我进行重写了 内部会有多个实现方法  所以就按照对应的传入参数 来判断是哪个方法  因为没有了protoc编译了 所以肯定是第一个
-        // for (int i = 0; i < methods.length; i++) {
-        //     if (methods[i].getParameterTypes()[0]==msg.getClass())
-        //     {
-        //         method = methods[i];
-        //         break;
-        //     }
-        // }
-
 
         Object response = null;
         try {

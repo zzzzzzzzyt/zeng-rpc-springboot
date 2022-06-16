@@ -11,5 +11,5 @@ import java.util.Map;
  **/
 @Data
 public class ServerMethodRegistryRequest {
-    private Map<String,Integer> map;
+    private Map<String, Integer> map;
 }
