@@ -24,7 +24,7 @@ public class RpcMonitorOperator {
     public static RpcMonitorOperator rpcMonitorOperator;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         rpcMonitorOperator = this;
     }
 

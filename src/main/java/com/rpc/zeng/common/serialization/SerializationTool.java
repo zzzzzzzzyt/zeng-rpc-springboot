@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SerializationTool implements Serializer {
 
-    private String serialization;
+    private final String serialization;
 
     public SerializationTool(ParameterSettings parameterSettings) {
         serialization = parameterSettings.getRpcSerialization();
