@@ -2,8 +2,7 @@ package com.rpc.zeng.consumer.proxy;
 
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.monitor.RpcMonitorOperator;
-import com.rpc.zeng.consumer.netty.NettyClient;
-import com.rpc.zeng.consumer.proxy.ClientProxy;
+import com.rpc.zeng.consumer.netty_client.NettyClient;
 import com.rpc.zeng.consumer.service_discovery.NacosServiceDiscovery;
 import com.rpc.zeng.consumer.service_discovery.ZkCuratorDiscovery;
 import com.rpc.zeng.consumer.service_discovery.ZkServiceDiscovery;

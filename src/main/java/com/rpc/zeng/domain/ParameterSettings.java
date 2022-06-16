@@ -8,7 +8,6 @@ import lombok.Data;
  **/
 @Data
 public class ParameterSettings {
-    private String rpcTool;
     private String compressTool;
     private String registryName;
     private String rpcSerialization;

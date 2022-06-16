@@ -25,9 +25,9 @@ import java.util.Objects;
 @Slf4j
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     private final String methodName;
-    private CompressTypeTool compressTool;
-    private SerializationTool serializationTool;
-    private boolean openFunction;
+    private final CompressTypeTool compressTool;
+    private final SerializationTool serializationTool;
+    private final boolean openFunction;
 
     //要传入对应的方法名 否则不知道 netty服务器能执行什么方法
     public NettyServerHandler(String methodName, ParameterSettings parameterSettings) {

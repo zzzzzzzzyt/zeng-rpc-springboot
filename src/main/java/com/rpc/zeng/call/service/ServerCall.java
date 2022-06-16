@@ -1,6 +1,6 @@
 package com.rpc.zeng.call.service;
 
-import com.rpc.zeng.call.service.call.ChosenServerCall;
+import com.rpc.zeng.call.service.call.NettyServerCall;
 import com.rpc.zeng.domain.ParameterSettings;
 import com.rpc.zeng.domain.ServerMethodRegistry;
 
@@ -10,6 +10,6 @@ import com.rpc.zeng.domain.ServerMethodRegistry;
 //方法的注册名必须和对应的方法一一对应
 public class ServerCall {
     public static void main(ParameterSettings parameterSettings, ServerMethodRegistry serverMethodRegistry) {
-        ChosenServerCall.start(parameterSettings, serverMethodRegistry);
+        NettyServerCall.main(parameterSettings, serverMethodRegistry);
     }
 }

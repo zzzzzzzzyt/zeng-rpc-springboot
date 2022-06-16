@@ -4,7 +4,7 @@ package com.rpc.zeng.provider.bootstrap;
 import com.rpc.zeng.common.monitor.RpcMonitor;
 import com.rpc.zeng.common.monitor.RpcMonitorOperator;
 import com.rpc.zeng.domain.ParameterSettings;
-import com.rpc.zeng.provider.netty.NettyServer;
+import com.rpc.zeng.provider.netty_server.NettyServer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.atomic.AtomicInteger;

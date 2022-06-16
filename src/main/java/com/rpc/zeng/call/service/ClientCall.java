@@ -1,6 +1,7 @@
 package com.rpc.zeng.call.service;
 
 import com.rpc.zeng.call.service.call.ChosenClientCall;
+import com.rpc.zeng.call.service.call.NettyClientCall;
 import com.rpc.zeng.common.entity.Person;
 import com.rpc.zeng.common.method.Customer;
 import com.rpc.zeng.domain.ClientMethodCall;
@@ -20,7 +21,7 @@ import java.util.Map;
 public class ClientCall {
     public static void main(ParameterSettings parameterSettings, ClientMethodCall clientMethodCall) {
         //实现调用
-        Customer customer = ChosenClientCall.start(parameterSettings);
+        Customer customer = NettyClientCall.createCustomer(parameterSettings);
         assert customer != null;
         Map<String, String> methodMap = clientMethodCall.getMethod();
         for (String methodName : methodMap.keySet()) {

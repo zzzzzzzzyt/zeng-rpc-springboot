@@ -1,4 +1,4 @@
-package com.rpc.zeng.consumer.netty;
+package com.rpc.zeng.consumer.netty_client;
 
 
 import com.rpc.zeng.common.annotation.HeartBeatTool;

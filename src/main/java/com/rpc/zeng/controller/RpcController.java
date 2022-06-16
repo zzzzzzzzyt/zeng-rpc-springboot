@@ -38,9 +38,6 @@ public class RpcController {
      */
     @PostMapping("/parameterSettings")
     public void parameterSettings(@RequestBody ParameterSettingsRequest parameterSettingsRequest) {
-        if (!StringUtils.isBlank(parameterSettingsRequest.getRpcTool())) {
-            parameterSettings.setRpcTool(parameterSettingsRequest.getRpcTool());
-        }
         if (!StringUtils.isBlank(parameterSettingsRequest.getCompressTool())) {
             parameterSettings.setCompressTool(parameterSettingsRequest.getCompressTool());
         }
