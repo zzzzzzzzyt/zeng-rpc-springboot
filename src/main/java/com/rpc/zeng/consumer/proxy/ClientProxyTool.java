@@ -1,6 +1,7 @@
 package com.rpc.zeng.consumer.proxy;
 
 
+import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.domain.ParameterSettings;
 
 /**
@@ -18,6 +19,12 @@ public class ClientProxyTool implements ClientProxy {
             case "RpcNettyClientJDKProxy":
                 clientProxy = new RpcNettyClientJDKProxy();
                 break;
+            default:
+                try {
+                    throw new RpcException("没有该代理对象");
+                } catch (RpcException e) {
+                    e.printStackTrace();
+                }
         }
     }
 
