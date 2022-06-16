@@ -31,13 +31,13 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter implements 
     private ChannelHandlerContext context;
 
     //序列化工具
-    private SerializationTool serializationTool;
+    private final SerializationTool serializationTool;
 
     //判断是否进行解压缩
-    private boolean openFunction;
+    private final boolean openFunction;
 
     //解压缩工具
-    private CompressTypeTool compressTool;
+    private final CompressTypeTool compressTool;
 
     public NettyClientHandler(ParameterSettings parameterSettings) {
         serializationTool = new SerializationTool(parameterSettings);
