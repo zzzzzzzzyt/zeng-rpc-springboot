@@ -1,4 +1,4 @@
-package com.rpc.zeng.provider.bootstrap.netty;
+package com.rpc.zeng.provider.bootstrap;
 
 
 import com.rpc.zeng.common.monitor.RpcMonitor;
@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author 祝英台炸油条
  */
 @Slf4j
-public class NettyProviderBootStrap24 {
+public class NettyProviderBootStrap {
     static volatile AtomicInteger port = new AtomicInteger(6666); //对应的端口 要传过去 注册到注册中心去
 
 

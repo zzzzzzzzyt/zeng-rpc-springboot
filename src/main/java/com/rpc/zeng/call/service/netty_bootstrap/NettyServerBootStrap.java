@@ -4,7 +4,7 @@ import com.rpc.zeng.api.init.ZK;
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.domain.ParameterSettings;
 import com.rpc.zeng.domain.ServerMethodRegistry;
-import com.rpc.zeng.provider.bootstrap.netty.NettyProviderBootStrap24;
+import com.rpc.zeng.provider.bootstrap.NettyProviderBootStrap;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
@@ -53,6 +53,6 @@ public class NettyServerBootStrap {
         numBuilder.deleteCharAt(numBuilder.length() - 1);
 
         //没有对应的版本了 现在就用2.4之后的版本启动
-        NettyProviderBootStrap24.main(new String[]{methodBuilder.toString(), numBuilder.toString()}, parameterSettings);
+        NettyProviderBootStrap.main(new String[]{methodBuilder.toString(), numBuilder.toString()}, parameterSettings);
     }
 }

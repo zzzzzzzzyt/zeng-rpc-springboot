@@ -1,4 +1,4 @@
-package com.rpc.zeng.consumer.bootstrap.netty;
+package com.rpc.zeng.consumer.bootstrap;
 
 
 import com.rpc.zeng.common.method.Customer;
@@ -13,7 +13,7 @@ import com.rpc.zeng.domain.ParameterSettings;
 /**
  * @author 祝英台炸油条
  */
-public class NettyConsumerBootStrap24 {
+public class NettyConsumerBootStrap {
     public static Customer main(ParameterSettings parameterSettings) {
         ClientProxyTool proxy = new ClientProxyTool(parameterSettings);
         return (Customer) proxy.getBean(Customer.class, parameterSettings);
