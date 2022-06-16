@@ -23,7 +23,6 @@ public class RpcController {
     //先设置默认值 如果前方请求不为空就进行改变
     static {
         //设置默认值  如果传来的参数不为空的话  设置为传来的值
-        parameterSettings.setRpcTool("Netty");
         parameterSettings.setCompressTool("DeflaterUtils");
         parameterSettings.setRegistryName("nacos");
         parameterSettings.setRpcSerialization("fastjson");

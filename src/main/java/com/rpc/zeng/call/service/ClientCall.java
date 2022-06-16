@@ -1,6 +1,5 @@
 package com.rpc.zeng.call.service;
 
-import com.rpc.zeng.call.service.call.ChosenClientCall;
 import com.rpc.zeng.call.service.call.NettyClientCall;
 import com.rpc.zeng.common.entity.Person;
 import com.rpc.zeng.common.method.Customer;
