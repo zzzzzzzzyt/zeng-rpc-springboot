@@ -11,7 +11,12 @@ import com.rpc.zeng.domain.ParameterSettings;
  * @author 祝英台炸油条
  */
 public class NettyClientCall {
+    static Customer customer;
+
     public static Customer createCustomer(ParameterSettings parameterSettings) {
-        return NettyClientBootStrap.start(parameterSettings);
+        if (customer == null) {
+            customer = NettyClientBootStrap.start(parameterSettings);
+        }
+        return customer;
     }
 }
