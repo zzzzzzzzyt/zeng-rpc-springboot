@@ -3,10 +3,12 @@ package com.rpc.zeng.consumer.proxy;
 
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.domain.ParameterSettings;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author 祝英台炸油条
  */
+@Slf4j
 public class ClientProxyTool implements ClientProxy {
 
     private ClientProxy clientProxy;
@@ -23,7 +25,7 @@ public class ClientProxyTool implements ClientProxy {
                 try {
                     throw new RpcException("没有该代理对象");
                 } catch (RpcException e) {
-                    e.printStackTrace();
+                    log.error(e.getMessage(), e);
                 }
         }
     }

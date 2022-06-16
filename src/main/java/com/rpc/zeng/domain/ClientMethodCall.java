@@ -11,5 +11,5 @@ import java.util.Map;
  **/
 @Data
 public class ClientMethodCall {
-    private Map<String,String> method;
+    private Map<String, String> method;
 }

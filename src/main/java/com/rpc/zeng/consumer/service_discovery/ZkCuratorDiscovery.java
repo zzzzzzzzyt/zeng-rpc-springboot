@@ -49,7 +49,7 @@ public class ZkCuratorDiscovery {
 
         String prePath = "/service/" + methodName;
         //v1.5修改使用负载均衡策略 根据接口上注解选择的实现类进行调用
-        String methodAddress = null;
+        String methodAddress;
         try {
             LoadBalance nowLoadBalance;
             switch (parameterSettings.getLoadBalanceMethod()) {

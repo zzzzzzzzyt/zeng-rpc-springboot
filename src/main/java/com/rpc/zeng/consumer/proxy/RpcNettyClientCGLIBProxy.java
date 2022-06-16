@@ -29,8 +29,6 @@ public class RpcNettyClientCGLIBProxy implements ClientProxy, MethodInterceptor 
         this.parameterSettings = parameterSettings;
         //设置动态代理增强类
         Enhancer enhancer = new Enhancer();
-        //设置类加载器
-        // enhancer.setClassLoader(serviceClass.getClassLoader());
         //设置代理类
         enhancer.setSuperclass(serviceClass);
         //设置对应的方法执行拦截器，方法回调
@@ -68,7 +66,7 @@ public class RpcNettyClientCGLIBProxy implements ClientProxy, MethodInterceptor 
      * 实际去获得对应的服务 并完成方法调用的方法
      *
      * @param methodName        根据方法名  根据添加的注册中心注解来选择相应的注册中心进行  实现负载均衡获取一个方法对应地址
-     * @param parameterSettings
+     * @param parameterSettings 对应传进来的参数
      */
     private static String getMethodAddress(String methodName, ParameterSettings parameterSettings) {
         switch (parameterSettings.getRegistryName()) {
