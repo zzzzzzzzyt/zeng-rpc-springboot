@@ -4,7 +4,7 @@ package com.rpc.zeng.consumer.netty;
 import com.rpc.zeng.common.annotation.HeartBeatTool;
 import com.rpc.zeng.common.codec.AddCodec;
 import com.rpc.zeng.common.configuration.GlobalConfiguration;
-import com.rpc.zeng.consumer.netty_client_handler.NettyClientHandler24;
+import com.rpc.zeng.consumer.netty_client_handler.NettyClientHandler;
 import com.rpc.zeng.domain.ParameterSettings;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;
@@ -37,14 +37,14 @@ public class NettyClient24 {
     private static final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     private static final HeartBeatTool heartBeatToolAnnotation = GlobalConfiguration.class.getAnnotation(HeartBeatTool.class);
     // static NettyClientHandler24 clientHandler;//跟他没关系 因为每次都新建一个
-    private static ThreadLocal<NettyClientHandler24> nettyClientHandlerThreadLocal;
+    private static ThreadLocal<NettyClientHandler> nettyClientHandlerThreadLocal;
 
     public static Object callMethod(String hostName, int port, Object param, Method method, ParameterSettings parameterSettings) {
         if (nettyClientHandlerThreadLocal == null)
-            nettyClientHandlerThreadLocal = ThreadLocal.withInitial(() -> new NettyClientHandler24(parameterSettings));
+            nettyClientHandlerThreadLocal = ThreadLocal.withInitial(() -> new NettyClientHandler(parameterSettings));
 
 
-        NettyClientHandler24 clientHandler = nettyClientHandlerThreadLocal.get();
+        NettyClientHandler clientHandler = nettyClientHandlerThreadLocal.get();
         //建立客户端监听
         Bootstrap bootstrap = new Bootstrap();
         EventLoopGroup workGroup = new NioEventLoopGroup();
