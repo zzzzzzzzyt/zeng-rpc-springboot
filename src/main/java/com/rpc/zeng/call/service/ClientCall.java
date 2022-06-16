@@ -23,19 +23,19 @@ public class ClientCall {
         Customer customer = NettyClientCall.createCustomer(parameterSettings);
         assert customer != null;
         Map<String, String> methodMap = clientMethodCall.getMethod();
-        for (String methodName : methodMap.keySet()) {
-            switch (methodName) {
+        for (Map.Entry<String, String> method : methodMap.entrySet()) {
+            switch (method.getKey()) {
                 case "Hello":
-                    log.info(customer.Hello(methodMap.get(methodName)));
+                    log.info(customer.Hello(method.getValue()));
                     break;
                 case "Bye":
-                    log.info(customer.Bye(methodMap.get(methodName)));
+                    log.info(customer.Bye(method.getValue()));
                     break;
                 case "GetName":
-                    log.info(customer.GetName(new Person(methodMap.get(methodName))));
+                    log.info(customer.GetName(new Person(method.getValue())));
                     break;
                 case "GetPerson":
-                    Person person = customer.GetPerson(new Person(methodMap.get(methodName)));
+                    Person person = customer.GetPerson(new Person(method.getValue()));
                     log.info("获取对应类" + person.getClass() + "，名字为" + person.getName());
                     break;
                 default:

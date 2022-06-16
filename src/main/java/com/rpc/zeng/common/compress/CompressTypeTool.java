@@ -19,19 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CompressTypeTool implements CompressType {
 
-    static CompressType compressUtils;
-
-    // // 获取通过SPI机制获取的相应工具类  想用SPI机制开启这个即可
-    // static {
-    //     compressUtils = SPICompressUtils.getUtils();
-    //     if (compressUtils == null) {
-    //         try {
-    //             throw new RpcException("相应工具类为空");
-    //         } catch (RpcException e) {
-    //             log.error(e.getMessage(), e);
-    //         }
-    //     }
-    // }
+    private CompressType compressUtils;
 
 
     //通过注解获取对应的工具
@@ -68,7 +56,6 @@ public class CompressTypeTool implements CompressType {
     @Override
     public byte[] compress(byte[] bytes) {
         return compressUtils.compress(bytes);
-
     }
 
     @Override

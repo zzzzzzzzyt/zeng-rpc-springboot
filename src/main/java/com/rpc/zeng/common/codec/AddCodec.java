@@ -108,54 +108,6 @@ public class AddCodec {
             case "jackson":
             case "fastjson":
             case "gson":
-                /*
-                    2.4版本之前打开注解
-                 */
-                // if (returnType!=String.class&&parameterType!=String.class)
-                // {
-                //     //都进行序列化后传输
-                //     pipeline.addLast(new ByteArrayEncoder());
-                //     pipeline.addLast(new ByteArrayDecoder());
-                // }
-                // else if (returnType!=String.class&&parameterType==String.class)
-                // {
-                //     //如果是客户端的话那么传出的是服务端传入的  所以这边编码那边就是解码
-                //     if (isConsumer)
-                //     {
-                //         //根据传入传出进行对应的编码
-                //         pipeline.addLast(new StringEncoder());
-                //         pipeline.addLast(new ByteArrayDecoder());;
-                //     }
-                //     else
-                //     {
-                //         pipeline.addLast(new StringDecoder());
-                //         pipeline.addLast(new ByteArrayEncoder());
-                //     }
-                // }
-                // else if (returnType==String.class&&parameterType!=String.class)
-                // {
-                //     //客户端 会对参数进行编码，服务端是解码
-                //     if (isConsumer)
-                //     {
-                //         pipeline.addLast(new ByteArrayEncoder());
-                //         pipeline.addLast(new StringDecoder());
-                //     }
-                //     else
-                //     {
-                //         pipeline.addLast(new StringEncoder());
-                //         //这个就是获取对应的实例 必须要这样传
-                //         pipeline.addLast(new ByteArrayDecoder());
-                //     }
-                // }
-                // else
-                // {
-                //     //因为传入参数和传出都是字符串类型 所以就传入字符串编解码器
-                //     pipeline.addLast(new StringEncoder());
-                //     pipeline.addLast(new StringDecoder());
-                // }
-                /*
-                    2.4版本之前 注释底下
-                 */
                 pipeline.addLast(new ByteArrayEncoder());
                 pipeline.addLast(new ByteArrayDecoder());
                 return;

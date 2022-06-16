@@ -2,7 +2,7 @@ package com.rpc.zeng.provider.netty_server_handler;
 
 
 import com.rpc.zeng.common.compress.CompressTypeTool;
-import com.rpc.zeng.common.constants.MethodPath;
+import com.rpc.zeng.common.constants.RpcConstants;
 import com.rpc.zeng.common.serialization.SerializationTool;
 import com.rpc.zeng.domain.ParameterSettings;
 import io.netty.channel.ChannelHandlerContext;
@@ -46,7 +46,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         //使用反射的方法获取对应的类 通过反射再进行执行
         Class<?> calledClass = null;
         try {
-            calledClass = Class.forName(MethodPath.API_ADDRESS + methodName + "ServiceImpl");
+            calledClass = Class.forName(RpcConstants.API_ADDRESS + methodName + "ServiceImpl");
         } catch (ClassNotFoundException e) {
             log.error(e.getMessage(), e);
         }
