@@ -23,7 +23,7 @@ import java.util.concurrent.Callable;
  * @author 祝英台炸油条
  */
 @Slf4j
-public class NettyClientHandler24 extends ChannelInboundHandlerAdapter implements Callable {
+public class NettyClientHandler extends ChannelInboundHandlerAdapter implements Callable {
     //传入的参数
     private Object param;
     private Method method;
@@ -39,7 +39,7 @@ public class NettyClientHandler24 extends ChannelInboundHandlerAdapter implement
     //解压缩工具
     private CompressTypeTool compressTool;
 
-    public NettyClientHandler24(ParameterSettings parameterSettings) {
+    public NettyClientHandler(ParameterSettings parameterSettings) {
         serializationTool = new SerializationTool(parameterSettings);
         compressTool = new CompressTypeTool(parameterSettings);
         openFunction = Objects.equals(parameterSettings.getIsCompress(), "1");
