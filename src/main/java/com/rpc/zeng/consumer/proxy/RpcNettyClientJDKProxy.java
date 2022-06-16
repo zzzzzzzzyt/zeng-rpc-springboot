@@ -1,4 +1,4 @@
-package com.rpc.zeng.consumer.proxy.netty;
+package com.rpc.zeng.consumer.proxy;
 
 import com.rpc.zeng.common.exception.RpcException;
 import com.rpc.zeng.common.monitor.RpcMonitorOperator;

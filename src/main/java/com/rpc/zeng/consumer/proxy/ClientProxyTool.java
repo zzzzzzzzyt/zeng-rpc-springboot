@@ -1,8 +1,6 @@
 package com.rpc.zeng.consumer.proxy;
 
 
-import com.rpc.zeng.consumer.proxy.netty.RpcNettyClientCGLIBProxy;
-import com.rpc.zeng.consumer.proxy.netty.RpcNettyClientJDKProxy;
 import com.rpc.zeng.domain.ParameterSettings;
 
 /**
