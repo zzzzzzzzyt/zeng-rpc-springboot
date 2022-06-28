@@ -80,10 +80,8 @@ public class NettyClient {
                             pipeline.addLast(clientHandler);
                         }
                     });
-
             //进行连接
             bootstrap.connect(hostName, port).sync();
-
         } catch (InterruptedException e) {
             log.error(e.getMessage(), e);
         }
