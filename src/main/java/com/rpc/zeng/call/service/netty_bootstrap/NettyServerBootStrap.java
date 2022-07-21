@@ -6,6 +6,7 @@ import com.rpc.zeng.domain.ParameterSettings;
 import com.rpc.zeng.domain.ServerMethodRegistry;
 import com.rpc.zeng.provider.bootstrap.NettyProviderBootStrap;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Map;
 
@@ -34,7 +35,7 @@ public class NettyServerBootStrap {
 
         //如果不存在那就返回  或者 不一致 就抛出异常
         try {
-            if (methods.length == 0) throw new RpcException("传入方法数为0");
+            if (ArrayUtils.isEmpty(methods)) throw new RpcException("传入方法数为0");
         } catch (RpcException e) {
             log.error(e.getMessage(), e);
             return;
