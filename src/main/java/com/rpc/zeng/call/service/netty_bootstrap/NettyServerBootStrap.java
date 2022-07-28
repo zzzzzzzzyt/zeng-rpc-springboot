@@ -53,7 +53,6 @@ public class NettyServerBootStrap {
         methodBuilder.deleteCharAt(methodBuilder.length() - 1);
         numBuilder.deleteCharAt(numBuilder.length() - 1);
 
-        //没有对应的版本了 现在就用2.4之后的版本启动
         NettyProviderBootStrap.main(new String[]{methodBuilder.toString(), numBuilder.toString()}, parameterSettings);
     }
 }

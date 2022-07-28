@@ -20,7 +20,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Slf4j
 public class NettyProviderBootStrap {
-    static volatile AtomicInteger port = new AtomicInteger(6666); //对应的端口 要传过去 注册到注册中心去
+
+    static AtomicInteger port = new AtomicInteger(6666); //对应的端口 要传过去 注册到注册中心去
 
 
     public static void main(String[] args, ParameterSettings parameterSettings) {
