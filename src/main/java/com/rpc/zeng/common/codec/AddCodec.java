@@ -16,6 +16,7 @@ import io.netty.handler.codec.string.StringEncoder;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 //公共类 根据对应选择的注解进行编码器的添加
 
@@ -35,12 +36,12 @@ public class AddCodec {
 
         switch (parameterSettings.getRpcSerialization()) {
             case "ObjectCodec": //2.2版本之前会使用
-                if (returnType != String.class && parameterType != String.class) {
+                if (!Objects.equals(returnType,String.class)&& !Objects.equals(parameterType,String.class)) {
                     pipeline.addLast(new ObjectEncoder());
                     //传的参是固定写法
                     pipeline.addLast(new ObjectDecoder(Integer.MAX_VALUE,
                             ClassResolvers.weakCachingResolver(null)));
-                } else if (returnType != String.class) {
+                } else if (!Objects.equals(returnType,String.class)) {
                     //如果是客户端的话那么传出的是服务端传入的  所以这边编码那边就是解码
                     if (isConsumer) {
                         //根据传入传出进行对应的编码
@@ -52,7 +53,7 @@ public class AddCodec {
                         pipeline.addLast(new StringDecoder());
                     }
 
-                } else if (parameterType != String.class) {
+                } else if (!Objects.equals(parameterType,String.class)) {
                     //客户端 会对参数进行编码，服务端是解码
                     if (isConsumer) {
                         pipeline.addLast(new ObjectEncoder());
@@ -69,11 +70,11 @@ public class AddCodec {
                 }
                 return;
             case "protoc":  //添加protobuf的编解码器   如果是protobuf的编解码器的话 那可能还需要一点其他操作  2.2版本之前会使用
-                if (returnType != String.class && parameterType != String.class) {
+                if (!Objects.equals(returnType,String.class) && !Objects.equals(parameterType,String.class)) {
                     pipeline.addLast(new ProtobufEncoder());
                     //对什么实例解码
                     pipeline.addLast(new ProtobufDecoder(PersonPOJO.Person.getDefaultInstance()));
-                } else if (returnType != String.class) {
+                } else if (!Objects.equals(returnType,String.class)) {
                     //如果是客户端的话那么传出的是服务端传入的  所以这边编码那边就是解码
                     if (isConsumer) {
                         //根据传入传出进行对应的编码
@@ -84,7 +85,7 @@ public class AddCodec {
                         pipeline.addLast(new ProtobufEncoder());
                         pipeline.addLast(new StringDecoder());
                     }
-                } else if (parameterType != String.class) {
+                } else if (!Objects.equals(parameterType,String.class)) {
                     //客户端 会对参数进行编码，服务端是解码
                     if (isConsumer) {
                         pipeline.addLast(new ProtobufEncoder());

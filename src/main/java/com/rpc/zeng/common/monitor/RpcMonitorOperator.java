@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Objects;
 
 /**
  * @Author 祝英台炸油条
@@ -50,7 +51,7 @@ public class RpcMonitorOperator {
         // 没问题 查询的时候 是跟对应的列名进行比较
         wrapper.eq("method_name", methodAddress);
         RpcMonitor rpcMonitor = rpcMonitorOperator.rpcMonitorService.getOne(wrapper);
-        if (rpcMonitor == null) try {
+        if (Objects.isNull(rpcMonitor)) try {
             throw new RpcException("监控中心出现错误");
         } catch (RpcException e) {
             log.error(e.getMessage(), e);

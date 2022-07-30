@@ -12,6 +12,8 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.ZooKeeper;
 
+import java.util.Objects;
+
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
 
 //简化zookeeper的使用  更加方便获取远端的方法的信息
@@ -40,7 +42,7 @@ public class ZkCuratorDiscovery {
         ZooKeeper zooKeeper = null;
         try {
             zooKeeper = client.getZookeeperClient().getZooKeeper();
-            if (zooKeeper.exists("/service/" + methodName, null) == null) {
+            if (Objects.isNull(zooKeeper.exists("/service/" + methodName, null))) {
                 throw new RpcException("不存在该方法");
             }
         } catch (Exception e) {

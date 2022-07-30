@@ -6,6 +6,7 @@ import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_SESSION_TIMEOUT;
@@ -27,7 +28,7 @@ public class ZK {
             });
 
             //如果存在就删  不存在就不删
-            if (zooKeeper.exists("/service", false) != null) {
+            if (Objects.nonNull(zooKeeper.exists("/service", false))) {
                 //内部得实现递归删除
                 deleteAll("/service");
             }

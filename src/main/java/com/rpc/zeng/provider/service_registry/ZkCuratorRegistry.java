@@ -6,6 +6,7 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
 
@@ -34,10 +35,10 @@ public class ZkCuratorRegistry {
         //多线程问题 一定要进行加锁
         synchronized (ZkCuratorRegistry.class) {
             try {
-                if (client.checkExists().forPath("/service") == null) {
+                if (Objects.isNull(client.checkExists().forPath("/service"))) {
                     client.create().forPath("/service", "".getBytes(StandardCharsets.UTF_8));
                 }
-                if (client.checkExists().forPath("/service/" + rpcServiceName) == null) {
+                if (Objects.isNull(client.checkExists().forPath("/service/" + rpcServiceName))) {
                     client.create().forPath("/service/" + rpcServiceName, "".getBytes(StandardCharsets.UTF_8));
                 }
             } catch (Exception e) {

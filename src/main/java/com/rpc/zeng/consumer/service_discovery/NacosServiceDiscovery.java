@@ -8,6 +8,7 @@ import com.rpc.zeng.common.constants.RpcConstants;
 import com.rpc.zeng.common.exception.RpcException;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Objects;
 import java.util.Properties;
 
 /**
@@ -26,7 +27,7 @@ public class NacosServiceDiscovery {
         } catch (NacosException e) {
             log.error(e.getMessage(), e);
         }
-        if (instance == null) {
+        if (Objects.isNull(instance)) {
             log.info("没有提供该方法");
             try {
                 throw new RpcException("没有对应的方法");

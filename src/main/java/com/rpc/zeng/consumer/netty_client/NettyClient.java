@@ -17,6 +17,7 @@ import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -40,7 +41,7 @@ public class NettyClient {
     private static ThreadLocal<NettyClientHandler> nettyClientHandlerThreadLocal;
 
     public static Object callMethod(String hostName, int port, Object param, Method method, ParameterSettings parameterSettings) {
-        if (nettyClientHandlerThreadLocal == null)
+        if (Objects.isNull(nettyClientHandlerThreadLocal))
             nettyClientHandlerThreadLocal = ThreadLocal.withInitial(() -> new NettyClientHandler(parameterSettings));
 
 

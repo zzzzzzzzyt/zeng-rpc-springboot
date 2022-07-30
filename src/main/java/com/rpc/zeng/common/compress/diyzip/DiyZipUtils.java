@@ -49,7 +49,7 @@ public class DiyZipUtils implements CompressType {
         HashMap<Byte, Integer> nodeMap = new HashMap<>();
         for (Byte one : contentBytes) {
             Integer value = nodeMap.get(one);
-            if (value == null) {
+            if (Objects.isNull(value)) {
                 nodeMap.put(one, 1);
             } else {
                 nodeMap.put(one, value + 1);
@@ -121,7 +121,7 @@ public class DiyZipUtils implements CompressType {
 
     private static HashMap<Byte, String> getCodes(Node1 root) {
         StringBuilder stringBuilder = new StringBuilder();
-        if (root == null) {
+        if (Objects.isNull(root)) {
             log.info("无法进行编码 兄弟");
         } else {
             getCodes(root.left, "0", stringBuilder);
@@ -135,9 +135,9 @@ public class DiyZipUtils implements CompressType {
         StringBuilder stringBuilder1 = new StringBuilder(stringBuilder);  //必须要创建 局部的stringBuilder 不然每次相当于都会在同一个地址上工作
         stringBuilder1.append(code);
         //判断不是空
-        if (node != null) {
+        if (Objects.nonNull(node)) {
             //判断不是叶子节点 则进行继续遍历
-            if (node.data == null) {
+            if (Objects.isNull(node.data)) {
                 //向左遍历
                 getCodes(node.left, "0", stringBuilder1);
                 //向右遍历

@@ -7,6 +7,7 @@ import net.jpountz.lz4.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @author 祝英台炸油条
@@ -43,7 +44,7 @@ public class Lz4Utils implements CompressType {
             LZ4BlockInputStream decompressedInputStream = new LZ4BlockInputStream(inputStream, decompressor);
             int count;
             byte[] buffer = new byte[BUFFER_SIZE];
-            while ((count = decompressedInputStream.read(buffer)) != -1) {
+            while (!Objects.equals(count = decompressedInputStream.read(buffer),-1)) {
                 outputStream.write(buffer, 0, count);
             }
             decompressedInputStream.close();

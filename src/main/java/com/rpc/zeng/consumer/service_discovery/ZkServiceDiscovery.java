@@ -11,6 +11,7 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_SESSION_TIMEOUT;
@@ -39,7 +40,7 @@ public class ZkServiceDiscovery {
 
         try {
             //判断节点中是否存在对应路径  不存在则抛出异常
-            if (zooKeeper.exists("/service/" + methodName, null) == null) {
+            if (Objects.isNull(zooKeeper.exists("/service/" + methodName, null))) {
                 throw new RpcException("不存在该方法");
             }
             String prePath = "/service/" + methodName;

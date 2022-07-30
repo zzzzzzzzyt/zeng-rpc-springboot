@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -36,9 +37,9 @@ public class ZipUtils implements CompressType {
         ZipInputStream zip = new ZipInputStream(new ByteArrayInputStream(bytes));
         byte[] buffer = new byte[BUFFER_SIZE];
         try {
-            while (zip.getNextEntry() != null) {
+            while (Objects.nonNull(zip.getNextEntry())) {
                 int n;
-                while ((n = zip.read(buffer)) != -1) {
+                while (!Objects.equals((n = zip.read(buffer)),-1)) {
                     out.write(buffer, 0, n);
                 }
             }

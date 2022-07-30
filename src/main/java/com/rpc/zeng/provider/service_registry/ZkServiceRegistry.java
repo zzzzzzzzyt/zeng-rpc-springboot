@@ -9,6 +9,7 @@ import org.apache.zookeeper.data.Stat;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_ADDRESS;
 import static com.rpc.zeng.common.constants.RpcConstants.ZOOKEEPER_SESSION_TIMEOUT;
@@ -43,7 +44,7 @@ public class ZkServiceRegistry {
         synchronized (ZkServiceRegistry.class) {
             try {
                 Stat exists = zooKeeper.exists("/service", false);
-                if (exists == null) {
+                if (Objects.isNull(exists)) {
                     zooKeeper.create("/service",
                             "".getBytes(StandardCharsets.UTF_8),
                             ZooDefs.Ids.OPEN_ACL_UNSAFE,
@@ -53,7 +54,7 @@ public class ZkServiceRegistry {
 
                 //v1.3进行软负载均衡修改
                 exists = zooKeeper.exists("/service/" + rpcServiceName, false);
-                if (exists == null) {
+                if (Objects.isNull(exists)) {
                     zooKeeper.create("/service/" + rpcServiceName,
                             "".getBytes(StandardCharsets.UTF_8),
                             ZooDefs.Ids.OPEN_ACL_UNSAFE,
