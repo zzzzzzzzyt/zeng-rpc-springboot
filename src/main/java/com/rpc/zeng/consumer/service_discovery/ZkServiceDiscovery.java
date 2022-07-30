@@ -60,6 +60,8 @@ public class ZkServiceDiscovery {
         } catch (KeeperException | InterruptedException | RpcException e) {
             log.error(e.getMessage(), e);
             return null;
+        } finally {
+            zooKeeperThreadLocal.remove(); //一定要保证每次的移除 防止内存泄漏
         }
     }
 }

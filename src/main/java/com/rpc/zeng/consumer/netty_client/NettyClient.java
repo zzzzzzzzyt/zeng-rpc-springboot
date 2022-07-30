@@ -97,7 +97,7 @@ public class NettyClient {
         } catch (InterruptedException | ExecutionException e) {
             log.error(e.getMessage(), e);
         }
-        nettyClientHandlerThreadLocal.remove(); //一个handler不能加到两个管道中 你说是吧
+        nettyClientHandlerThreadLocal.remove(); //一个handler不能加到两个管道中 你说是吧   同时也避免内存泄漏
         return response;
     }
 }

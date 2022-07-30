@@ -48,8 +48,8 @@ public class KryoUtils implements Serializer {
         //需要的参数有Input是它自带的
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
         Input input = new Input(byteArrayInputStream);
-        Object obj = kryo.readObject(input, clazz);
+        T obj = kryo.readObject(input, clazz);
         kryoThreadLocal.remove();
-        return (T) obj;
+        return obj;
     }
 }
